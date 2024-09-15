@@ -1,0 +1,64 @@
+/*Basisstijlen voor alle buttons */
+.btn {
+    display: inline-block;
+    text-align: center;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 16px;
+}
+
+/* Groottes */
+.btn.medium {
+    font-size: 16px;
+}
+
+.btn.large {
+    font-size: 18px;
+    padding: 15px 30px;
+}
+
+/* Mintgroene knoppen (Login, Submit, Register, Upload) */
+.btn.mint {
+    background-color: #17c98e;
+    color: black;
+}
+
+.btn.medium:hover {
+    background-color: #5dffee;
+}
+
+/* Zwarte knoppen met witte tekst (Start Journey, Submit-Questionnaire, Create Profile) */
+.btn.black {
+    background-color: black;
+    color: white;
+}
+
+.btn.black:hover {
+    background-color: #333;
+    transform: scale(1.05);
+}
+/* Gradient knop voor 'Start Matching' */
+.btn.gradient {
+    background: linear-gradient(90deg, #98FF98, #00cc99);
+    color: black;
+}
+
+.btn.gradient:hover {
+    transform: scale(1.05);
+    background: linear-gradient(90deg, #85e085, #00b386);
+}
+
+/* Extra stijl voor de cancel button */
+.btn.cancel {
+    background-color: black;
+    color: white;
+}
+
+.btn.cancel:hover {
+    background-color: #333;
+    transform: scale(1.05);
+}
