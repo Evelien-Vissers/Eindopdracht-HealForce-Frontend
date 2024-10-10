@@ -1,0 +1,70 @@
+.contact {
+    padding: 50px 20px;
+    text-align: center;
+    position: relative;
+    background: linear-gradient(100deg, #92e6d2 40%, #4bc192 100%);
+}
+h2 {
+    font-family: 'Prata', serif;
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.contact-text {
+    font-size: 18px;
+    color: black;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto; /* Zorgt ervoor dat de tekst gecentreerd is */
+}
+
+.contact-content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.contact-image {
+    position: relative;
+    width: 600px;
+    margin-right: 50px; /* Afstand van het midden */
+}
+
+.contact-form {
+    position: absolute;
+    background-color: black;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    right: 0; /* Zorgt ervoor dat het formulier rechts uitlijnt */
+    top: 50%; /* Plaatst het formulier iets boven het midden van de afbeelding */
+    transform: translateY(-50%); /* Verticaal centreren ten opzichte van de bovenkant van de afbeelding */
+    z-index: 10; /* Zorgt ervoor dat het formulier boven de afbeelding ligt */
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: none;
+}
+
+.form-input[type="text"], .form-input[type="email"] {
+    font-size: 16px;
+}
+
+textarea.form-input {
+    height: 100px;
+    resize: none;
+}
+
