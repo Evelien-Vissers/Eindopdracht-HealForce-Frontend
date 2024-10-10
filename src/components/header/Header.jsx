@@ -1,6 +1,7 @@
 import './Header.css'
 import logo from '../../assets/logo.png'
 import {Link} from "react-router-dom";
+import Button from "../button/Button.jsx";
 
 const Header = () => {
     return (
@@ -14,13 +15,14 @@ const Header = () => {
                         <Link to="/">Home</Link>
                     </li>
                     <li>
-                        <Link to="/mission">Our Mission & Vision</Link>
+                        <Link to="/mission">Our Mission</Link>
                     </li>
                     <li>
                         <Link to="/contact">Contact Us</Link>
                     </li>
                 </ul>
             </nav>
+            <Button text="Login" type="mint" size = "medium" link="/login"/>
         </header>
     )
 }

@@ -4,7 +4,7 @@
     text-align: center;
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     text-decoration: none;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
@@ -23,7 +23,7 @@
 
 /* Mintgroene knoppen (Login, Submit, Register, Upload) */
 .btn.mint {
-    background-color: #17c98e;
+    background: linear-gradient(90deg, #add8e6, #17c98e);
     color: black;
 }
 
@@ -41,6 +41,7 @@
     background-color: #333;
     transform: scale(1.05);
 }
+
 /* Gradient knop voor 'Start Matching' */
 .btn.gradient {
     background: linear-gradient(90deg, #98FF98, #00cc99);

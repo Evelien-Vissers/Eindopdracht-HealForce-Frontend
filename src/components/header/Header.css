@@ -5,15 +5,16 @@
     background-color: white;
     padding: 10px 20px;
     position: relative;
-    border-bottom: 50px solid black;
+    border-bottom: 30px solid black;
 }
 .logo {
    flex: 1;
 }
 
 .logo img {
-    width: 70px;
-    height: 70px;
+    width: 110px;
+    height: 110px;
+    margin: 15px;
 }
 
 nav {
@@ -26,16 +27,37 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 100px;
     list-style: none;
-
-
+    padding: 0;
+    margin: 0;
 }
+
 .nav-links a {
     text-decoration: none;
     color: black;
-    font-size: 16px;
+    font-size: 30px;
+    position:relative;
+    transition: color 0.5s ease;
 }
-.nav-links span {
-    color: dimgrey;
+
+/* Hover effect voor underline */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: black;
+    bottom: -5px; /* plaats de lijn net onder de tekst */
+    left: 0;
+    transition: width 0.3s ease;
 }
+
+.nav-links a:hover::after {
+    width: 100%; /* onderstreept volledig bij hover */
+}
+
+.nav-links a:hover {
+    color: #555; /* donkergrijze kleur bij hover */
+}
+
