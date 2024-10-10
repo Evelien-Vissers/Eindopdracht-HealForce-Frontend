@@ -1,6 +1,7 @@
 import React from 'react';
 import mission from '../../assets/mission.png'
 import friends from '../../assets/friends.png'
+import why from '../../assets/why.png'
 import './Mission.css'
 import Button from '../../components/button/Button.jsx'
 
@@ -39,7 +40,7 @@ const Mission = () => {
                         </ol>
                     </div>
                     <div className="mission-column">
-                        <h3 className="mission-title">Who Can Use Heal Force and Why Should They Use It?</h3>
+                        <h3 className="mission-title">Who Can Use Heal Force?</h3>
                         <img className="mission-image" src={friends} alt="Friends"/>
                         <p className="mission-paragraph">
                             People who can use Heal Force are:
@@ -48,9 +49,10 @@ const Mission = () => {
                             <li>Everyone who is currently going through a chronic disease; and</li>
                             <li>Everyone who has suffered from a chronic disease or is in remission.</li>
                         </ul>
-                        <p className="mission-paragraph">
-                            Why should people use Heal Force?
-                        </p>
+                    </div>
+                    <div className="mission-column">
+                        <h3 className="mission-title">Why Should People Use It?</h3>
+                        <img className="mission-image" src={why} alt="Questionmark"/>
                         <ol className="numbered-list">
                             <li>Because there is an immense need for an <b>accessible source of experiential
                                 knowledge</b> within the
@@ -70,7 +72,7 @@ const Mission = () => {
                 </div>
                 <div className="mission-second-section">
                     <div className="mission-second-content">
-                        <h3 className="mission-title">Join Heal Force Today</h3>
+                        <h3 className="mission-second-title">If We Want To Win the War Against Chronic Diseases, We Should Listen To Those Who Already Won.</h3>
                         <Button text="Start Your Heal Force Journey Now" type="black" size="large"
                                 link="/registration"/>
                     </div>

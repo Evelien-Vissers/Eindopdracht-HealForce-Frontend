@@ -12,14 +12,15 @@
 }
 
 .mission-title {
-    font-size: 24px;
+    font-family: 'Prata', sans-serif;
+    font-size: 35px;
     font-weight: bold;
     margin-bottom: 20px;
 }
 
 .mission-image {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%; /* Rond maken van de afbeelding */
     margin-bottom: 20px;
     object-fit: cover; /* Zorgt ervoor dat de afbeelding netjes past in de cirkel */
@@ -32,14 +33,41 @@
 
 /* Stijlen voor de genummerde en bulletlijsten */
 .numbered-list, .bullet-list {
-    margin-top: 20px; /* Ruimte boven de lijst */
-    margin-bottom: 20px; /* Ruimte onder de lijst */
-    padding-left: 20px; /* Inhoud van de lijst iets naar binnen schuiven */
-    line-height: 1.8; /* Regelhoogte, zorgt voor meer ruimte tussen regels */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    line-height: 1.8;
 }
 
 .numbered-list li, .bullet-list li {
-    margin-bottom: 12px; /* Ruimte tussen lijstitems */
+    margin-bottom: 12px;
 }
 
+.mission-second-section {
+    background-image: url('../../assets/warrior.png');
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 50px;
+}
 
+.mission-second-content {
+    text-align: right;
+    max-width: 500px;
+    height: 60vh;
+    color: black;
+}
+
+.mission-second-title {
+    font-family: 'Prata', sans-serif;
+    font-size: 45px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.fourth-content .btn {
+    margin-top: 20px;
+}
