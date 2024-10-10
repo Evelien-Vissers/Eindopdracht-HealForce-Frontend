@@ -7,7 +7,7 @@ const Contact = () => {
     return (
         <div className="contact">
             <h2 className>Let's Get in Touch!</h2>
-            <p className="fifth-text">We would love to hear from you. Whether you have a question, want to report any unwanted behavior on this platform, or just want to say
+            <p className="contact-text">We would love to hear from you. Whether you have a question, want to report any unwanted behavior on this platform, or just want to say
                 hi, feel free to reach out!</p>
 
             <div className="contact-content">

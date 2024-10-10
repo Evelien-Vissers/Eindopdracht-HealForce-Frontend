@@ -1,0 +1,36 @@
+/* Algemene container voor de User Agreement pagina */
+.user-agreement-container {
+    max-width: 800px;
+    margin: 0 auto; /* Centraal op de pagina */
+    padding: 20px;
+    background-color: #ffffff; /* Witte achtergrond voor leesbaarheid */
+    border-radius: 8px; /* Zachte hoeken */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtiele schaduw voor diepte */
+}
+
+/* Titel van de User Agreement */
+.user-agreement-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333333; /* Donkere kleur voor contrast */
+    margin-bottom: 20px;
+    text-align: center; /* Titel gecentreerd */
+}
+
+/* Subtitel sectie van de User Agreement */
+.user-agreement-subtitle {
+    font-size: 22px;
+    font-weight: 600;
+    color: #555555; /* Iets lichtere kleur dan de titel */
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+/* Algemene tekst voor de User Agreement */
+.user-agreement-text {
+    font-size: 16px;
+    line-height: 1.6; /* Ruimte tussen de regels voor leesbaarheid */
+    color: #666666; /* Neutrale kleur voor lange stukken tekst */
+    margin-bottom: 20px;
+    text-align: justify; /* Tekst netjes uitlijnen */
+}

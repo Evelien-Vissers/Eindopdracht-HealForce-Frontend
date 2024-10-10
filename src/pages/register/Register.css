@@ -1,0 +1,80 @@
+/* Algemene stijlen voor de registratiepagina */
+.register-page {
+    background: linear-gradient(135deg, #40e0d0, #c4cfce); /* Turquoise naar mintgroene gradient */
+    height: 120vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.register-block {
+    background-color: black;
+    color: white;
+    padding: 40px 30px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.register-title {
+    font-size: 35px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-label {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: none;
+    font-size: 16px;
+}
+
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.checkbox-label {
+    margin-left: 8px;
+    font-size: 14px;
+}
+
+.link {
+    color: #2fdec8; /* Mintgroene kleur voor de links */
+    text-decoration: underline;
+}
+
+.separator {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #ccc;
+}
+
+.login-text {
+    font-size: 16px;
+    color: white;
+}
+
+.login-text .btn {
+    margin-left: 8px;
+}
