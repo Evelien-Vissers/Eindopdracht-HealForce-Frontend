@@ -3,14 +3,17 @@
     background-color: black;
     color: white;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 20px;
-    height: 100px;
+    height: 200px;
+    position: relative;
 }
 
 /* Linker gedeelte met links */
 .footer-left {
+    position: absolute;
+    left: 20px;
     display: flex;
     flex-direction: column;
 }

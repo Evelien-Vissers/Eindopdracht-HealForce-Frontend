@@ -8,14 +8,14 @@
     height: 80vh;
     text-align: center;
     padding: 20px;
-    background: linear-gradient(200deg, #2fdec8 40%, #7caea9 100%);
+    background: linear-gradient(100deg, #92e6d2 40%, #4bc192 100%);
 }
 
 .home-title {
     font-family: 'Prata', serif;
-    font-size: 60px;
+    font-size: 120px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin: 30px;
     color: black;
 }
 
@@ -25,20 +25,9 @@
     margin-bottom: 30px;
     color: dimgrey;
     position: relative;
-    overflow: hidden; /* Verberg het deel van de tekst dat buiten het zichtbare gebied valt */
+    overflow: inherit; /* Verberg het deel van de tekst dat buiten het zichtbare gebied valt */
 }
 
-.home-subtitle::before {
-    content: ''; /* Voegt een pseudo-element toe voor de animatie */
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: dimgrey;
-    transform: translateX(-100%);
-    animation: slideReveal 1.5s forwards;
-}
 .home-second-section {
     background-color: white;
     color: black;

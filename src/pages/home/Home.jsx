@@ -8,7 +8,7 @@ const Home = () => {
             <div className="home-first-section">
                 <h1 className="home-title">Heal Force</h1>
                 <h3 className="home-subtitle">Because together, we are stronger</h3>
-                <button className="btn mint large">Start Your Heal Force Journey Now</button>
+                <button className="btn black">Start Your Heal Force Journey Now</button>
                 <p className="home-or">or</p>
                 <button className="btn black large">Login</button>
             </div>

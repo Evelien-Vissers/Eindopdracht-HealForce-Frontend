@@ -29,4 +29,9 @@ html, body {
   width: 100%;
 }
 
+h1 {
+  font-family: 'Rubik', sans-serif;
+  font-size: 4rem;
+}
+
 

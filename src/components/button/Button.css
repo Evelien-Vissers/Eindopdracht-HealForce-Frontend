@@ -2,39 +2,37 @@
 .btn {
     display: inline-block;
     text-align: center;
-    padding: 10px 20px;
+    padding: 15px 30px;
+    margin: 30px;
     border: none;
     border-radius: 20px;
     text-decoration: none;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
-    font-size: 16px;
+    font-size: 18px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(90deg, #010403, #474b53);
+    color: #ebf3f2;
 }
 
 /* Groottes */
-.btn.medium {
-    font-size: 16px;
-}
-
-.btn.large {
-    font-size: 18px;
-    padding: 15px 30px;
-}
 
 /* Mintgroene knoppen (Login, Submit, Register, Upload) */
 .btn.mint {
     background: linear-gradient(90deg, #add8e6, #17c98e);
     color: black;
+    border: #333333;
 }
 
-.btn.medium:hover {
-    background-color: #5dffee;
+.btn.mint:hover {
+    background: linear-gradient(90deg, #fafafa, #00cc99);
+    transform: scale(1.05);
 }
 
 /* Zwarte knoppen met witte tekst (Start Journey, Submit-Questionnaire, Create Profile) */
 .btn.black {
-    background-color: black;
-    color: white;
+    background: linear-gradient(90deg, #010403, #474b53);
+    color: #ebf3f2;
 }
 
 .btn.black:hover {
