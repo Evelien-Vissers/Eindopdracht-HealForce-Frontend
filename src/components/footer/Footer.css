@@ -1,0 +1,45 @@
+/* Basisstijl voor de footer */
+.footer {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    height: 200px;
+    position: relative;
+}
+
+/* Linker gedeelte met links */
+.footer-left {
+    position: absolute;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-link {
+    color: white;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+/* Midden gedeelte met logo en bedrijfsnaam */
+.footer-center {
+    text-align: center;
+}
+
+.footer-company-name {
+    margin: 0;
+    padding-bottom: 10px;
+    font-size: 14px;
+}
+
+.footer-logo {
+    width: 100px; /* Zorg dat het logo een geschikte grootte heeft */
+    height: auto;
+}

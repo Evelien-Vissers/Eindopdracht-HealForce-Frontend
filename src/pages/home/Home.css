@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Prata&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+.home-first-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(100deg, #92e6d2 40%, #4bc192 100%);
+}
+
+.home-title {
+    font-family: 'Prata', serif;
+    font-size: 120px;
+    font-weight: bold;
+    margin: 30px;
+    color: black;
+}
+
+.home-subtitle {
+    font-size: 36px;
+    font-weight: 300;
+    margin-bottom: 30px;
+    color: dimgrey;
+    position: relative;
+    overflow: inherit; /* Verberg het deel van de tekst dat buiten het zichtbare gebied valt */
+}
+
+.home-second-section {
+    background-color: white;
+    color: black;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.second-title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.second-paragraph {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+@keyframes slideReveal {
+    to {
+        transform: translateX(100%);
+    }
+}
