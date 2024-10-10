@@ -15,7 +15,9 @@ function App() {
   return (
     <div className="page-container">
       <Header />
-        <Register />
+        <Home />
+        <Mission />
+        <Contact />
       <Routes>
 
       </Routes>

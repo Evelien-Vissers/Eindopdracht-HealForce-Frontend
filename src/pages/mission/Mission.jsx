@@ -1,9 +1,9 @@
-import React from 'react';
 import mission from '../../assets/mission.png'
 import friends from '../../assets/friends.png'
 import why from '../../assets/why.png'
 import './Mission.css'
 import Button from '../../components/button/Button.jsx'
+import ToggleButton from '../../components/toggleButton/ToggleButton.jsx'
 
 const Mission = () => {
     return (
@@ -11,8 +11,9 @@ const Mission = () => {
             <div className="mission-container">
                 <div className="mission-section">
                     <div className="mission-column">
-                        <h3 className="mission-title">Our Mission & Vision</h3>
+                        <h3 className="mission-title">The Mission & Vision of Heal Force</h3>
                         <img className="mission-image" src={mission} alt="Mission"/>
+                        <ToggleButton>
                         <p className="mission-paragraph">
                             Heal Force's primary mission is to make a positive impact in the healthcare industry,
                             empowering
@@ -38,10 +39,12 @@ const Mission = () => {
                                 choices.
                             </li>
                         </ol>
+                        </ToggleButton>
                     </div>
                     <div className="mission-column">
                         <h3 className="mission-title">Who Can Use Heal Force?</h3>
                         <img className="mission-image" src={friends} alt="Friends"/>
+                        <ToggleButton>
                         <p className="mission-paragraph">
                             People who can use Heal Force are:
                         </p>
@@ -49,10 +52,16 @@ const Mission = () => {
                             <li>Everyone who is currently going through a chronic disease; and</li>
                             <li>Everyone who has suffered from a chronic disease or is in remission.</li>
                         </ul>
+                        <p className="mission-paragraph">
+                            We understand that many chronic disease fighters are not able to register themselves onto the Heal Force platform due to their condition.
+                            As of this moment, we can not allow care takers to register in name of their loved ones due to security issues, but we are working diligently to offer this possibility in the future.
+                        </p>
+                        </ToggleButton>
                     </div>
                     <div className="mission-column">
-                        <h3 className="mission-title">Why Should People Use It?</h3>
+                        <h3 className="mission-title">Why Should People Use Heal Force?</h3>
                         <img className="mission-image" src={why} alt="Questionmark"/>
+                        <ToggleButton>
                         <ol className="numbered-list">
                             <li>Because there is an immense need for an <b>accessible source of experiential
                                 knowledge</b> within the
@@ -68,11 +77,12 @@ const Mission = () => {
                                 stories.
                             </li>
                         </ol>
+                        </ToggleButton>
                     </div>
                 </div>
                 <div className="mission-second-section">
                     <div className="mission-second-content">
-                        <h3 className="mission-second-title">If We Want To Win the War Against Chronic Diseases, We Should Listen To Those Who Already Won.</h3>
+                        <h3 className="mission-second-title">To Win the War Against Chronic Diseases, We Should Listen to Those Who Already Won.</h3>
                         <Button text="Start Your Heal Force Journey Now" type="black" size="large"
                                 link="/registration"/>
                     </div>

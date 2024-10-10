@@ -15,15 +15,16 @@
     font-family: 'Prata', sans-serif;
     font-size: 35px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .mission-image {
     width: 300px;
     height: 300px;
-    border-radius: 50%; /* Rond maken van de afbeelding */
+    border-radius: 50%;
     margin-bottom: 20px;
-    object-fit: cover; /* Zorgt ervoor dat de afbeelding netjes past in de cirkel */
+    object-fit: cover;
 }
 
 .mission-paragraph {

@@ -1,6 +1,7 @@
 import './Footer.css'
 import logo from '../../assets/logo.png'
 import {Link} from "react-router-dom";
+import { redirectToHome} from "../../helpers/logoClickHelper.js";
 
 const Footer = () => {
     return (
