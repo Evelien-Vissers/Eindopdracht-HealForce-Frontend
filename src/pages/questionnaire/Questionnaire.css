@@ -1,0 +1,101 @@
+.questionnaire-page {
+    background: linear-gradient(135deg, #40e0d0, #c4cfce);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.questionnaire-form {
+    width: 100%;
+    max-width: 1000px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.questionnaire-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.question-section-left, .question-section-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+img {
+    max-width: 450px;
+    margin: 20px;
+    border-radius: 20px;
+}
+
+.image-section-left, .image-section-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+.location-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.location-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.upload-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.upload-section label {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.upload-box {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 150px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.upload-box input[type="file"] {
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: -10px;
+}
+

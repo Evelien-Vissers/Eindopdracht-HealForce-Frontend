@@ -9,6 +9,7 @@ import Mission from "./pages/mission/Mission.jsx";
 import Contact from './pages/contact/Contact.jsx'
 import Register from './pages/register/Register.jsx'
 import Login from "./pages/login/Login.jsx";
+import Questionnaire from "./pages/questionnaire/Questionnaire.jsx";
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,7 +17,7 @@ function App() {
   return (
     <div className="page-container">
       <Header />
-        <Login />
+        <Questionnaire />
       <Routes>
 
       </Routes>
