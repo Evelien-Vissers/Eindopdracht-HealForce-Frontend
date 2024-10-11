@@ -2,9 +2,12 @@
     padding: 50px 20px;
     text-align: center;
     position: relative;
+    height: 150vh;
     background: linear-gradient(100deg, #92e6d2 40%, #4bc192 100%);
 }
+
 h2 {
+    margin-top: 50px;
     font-family: 'Prata', serif;
     font-size: 45px;
     font-weight: bold;
@@ -29,7 +32,8 @@ h2 {
 .contact-image {
     position: relative;
     width: 600px;
-    margin-right: 50px; /* Afstand van het midden */
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .contact-form {
@@ -38,11 +42,11 @@ h2 {
     color: white;
     padding: 20px;
     border-radius: 8px;
-    width: 300px;
-    right: 0; /* Zorgt ervoor dat het formulier rechts uitlijnt */
-    top: 50%; /* Plaatst het formulier iets boven het midden van de afbeelding */
-    transform: translateY(-50%); /* Verticaal centreren ten opzichte van de bovenkant van de afbeelding */
-    z-index: 10; /* Zorgt ervoor dat het formulier boven de afbeelding ligt */
+    width: 400px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    right: 200px;
+    bottom: -330px;
+    z-index: 10;
 }
 
 .form-label {
@@ -54,7 +58,7 @@ h2 {
 .form-input {
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border-radius: 4px;
     border: none;
 }
