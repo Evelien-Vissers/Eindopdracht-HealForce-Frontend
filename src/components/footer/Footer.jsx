@@ -13,7 +13,7 @@ const Footer = () => {
 
             <div className="footer-center">
                 <p className="footer-company-name">Heal Force LLC ©</p>
-                <img src={logo} alt="Heal Force Logo" className="footer-logo" />
+                <img src={logo} alt="Heal Force Logo" className="footer-logo" onClick={redirectToHome} />
             </div>
         </footer>
     );
