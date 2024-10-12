@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="page-container">
       <Header />
-        <PrivacyPolicy />
+        <Questionnaire />
       <Routes>
 
       </Routes>
