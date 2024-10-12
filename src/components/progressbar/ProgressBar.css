@@ -1,0 +1,44 @@
+.progress-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to left, white, gray);
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    font-size: 18px;
+    max-width: 1000px;
+    text-align: center;
+    font-family: 'prata', sans-serif;
+    font-weight: bold;
+}
+
+.progress-bar span {
+    padding: 5px 10px;
+}
+
+.arrow-icon {
+    width: 20px;
+    height: 20px;
+    margin: 0 10px;
+    max-height: 20px;
+}
+
+.completed-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.completed {
+    color: green;
+}
+
+.current {
+    font-weight: bold;
+    color: blue; /* Oplichtende kleur voor de huidige stap */
+}
+
+.upcoming {
+    color: gray;
+}

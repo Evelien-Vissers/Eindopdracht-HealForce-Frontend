@@ -9,6 +9,7 @@ import countries from "../../constants/countryList.json";
 import diseases from "../../constants/chronicDiseaseList.json"
 import Button from "../../components/button/Button.jsx";
 import {useEffect, useState} from "react";
+import ProgressBar from "../../components/progressbar/ProgressBar.jsx";
 
 const Questionnaire = () => {
     const { register, handleSubmit, control, formState: { errors }} = useForm();
@@ -20,8 +21,11 @@ const Questionnaire = () => {
         const fetchUserData = async () => {
             try {
                 const response = await fetch("/api/getFirstName");
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
                 const data = await response.json();
-                setFirstName(data.firstName);
+                setFirstName(data.firstName || "User");
             }   catch (error) {
                 console.error('Error fetching user data:', error);
             }
@@ -52,30 +56,33 @@ const Questionnaire = () => {
 
     return (
         <div className="questionnaire-page">
+
             <form onSubmit={handleSubmit(onSubmit)} className="questionnaire-form">
                 <div className="questionnaire-section">
                     <div className="question-section-left">
                         <label>Hi {firstName}! When were you born?</label>
                         <input
                             type="date"
+                            id="dob"
                             {...register("dob", {required: true})}
                         />
                         {errors.dob && <span className="error-message">This field is required</span>}
 
                         <div className="location-group">
                             <div className="location-item">
-                                <label>Where are you currently living?</label>
+                                <label htmlFor="city">Where are you currently living?</label>
                                 <input
                                     type="text"
+                                    id="id"
                                     placeholder="City"
                                     {...register("city", {required: true})}
                                 />
                                 {errors.city && <span className="error-message">This field is required</span>}
                             </div>
 
-                            <div className="location-group">
-                                <label>Country</label>
-                                <select {...register("country", {required: true})}>
+                            <div className="location-item">
+                                <label htmlFor="country">Country</label>
+                                <select id="country" {...register("country", {required: true})}>
                                     <option value="">Select your country</option>
                                     {countries.map((country, index) => (
                                         <option key={index} value={country}>
@@ -86,6 +93,7 @@ const Questionnaire = () => {
                                 {errors.country && <span className="error-message">This field is required</span>}
                             </div>
                         </div>
+
                         <label>What gender do you identify with?</label>
                         <Controller
                             name="gender"
@@ -113,7 +121,7 @@ const Questionnaire = () => {
                         <img src={hospital} alt="Hospital"/>
                     </div>
                     <div className="question-section-right">
-                        <label>Primary Health Challenge</label>
+                        <label>What is/was your primary health challenge?</label>
 
                         <select {...register("healthChallenge", {required: "This field is required"})}>
                             <option value="">Select your primary health challenge</option>
@@ -220,21 +228,22 @@ const Questionnaire = () => {
                         <img src={choice} alt="Choice"/>
                     </div>
                 </div>
+                <div className="upload-section">
+                    <label>Lastly, please upload your Heal Force Profile Picture to complete this
+                        Questionnaire!</label>
+                    <div className="upload-box">
+                        <input
+                            type="file"
+                            accept="image/*"
+                            {...register("profilePicture", {required: "Profile picture is required"})}
+                        />
+                        {errors.profilePicture &&
+                            <span className="error-message">{errors.profilePicture.message}</span>}
+                    </div>
+                </div>
+                <Button text="Submit" type="black" size="large"></Button>
             </form>
 
-            <div className="upload-section">
-                <label>Lastly, please upload your Heal Force Profile Picture to complete this Questionnaire!</label>
-                <div className="upload-box">
-                    <input
-                        type="file"
-                        accept="image/*"
-                        {...register("profilePicture", {required: "Profile picture is required"})}
-                    />
-                    {errors.profilePicture && <span className="error-message">{errors.profilePicture.message}</span>}
-                </div>
-            </div>
-
-            <Button text="Submit" type="black" size="large"></Button>
 
         </div>
     )
