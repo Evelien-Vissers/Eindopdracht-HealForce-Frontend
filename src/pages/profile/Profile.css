@@ -1,0 +1,71 @@
+.profile-page {
+    background-color: black;
+    color: white;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.profile-header-image img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.profile-header {
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+.profile-header-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.start-matching-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1; /* Zorgt ervoor dat de knop bovenop de afbeelding wordt weergegeven */
+}
+
+.profile-content {
+    margin-top: -200px; /* Adjust this value to match where the image meets the next section */
+}
+
+.miniProfile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(64, 61, 61, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    max-width: 500px;
+    margin-top: -50px;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.miniProfile-container h2 {
+    font-size: 1.8rem;
+    margin: 10px 0;
+}
+
+.miniProfile-container p {
+    font-size: 1.2rem;
+    margin: 5px 0;
+}

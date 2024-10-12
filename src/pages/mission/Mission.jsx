@@ -82,7 +82,7 @@ const Mission = () => {
                 </div>
                 <div className="mission-second-section">
                     <div className="mission-second-content">
-                        <h3 className="mission-second-title">To Win the War Against Chronic Diseases, We Should Listen to Those Who Already Won.</h3>
+                        <h3 className="mission-second-title">In Order To Win the War Against Chronic Diseases, We Should Listen to Those Who Already Won.</h3>
                         <Button text="Start Your Heal Force Journey Now" type="black" size="large"
                                 link="/register"/>
                     </div>

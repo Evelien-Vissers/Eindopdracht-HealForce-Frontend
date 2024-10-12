@@ -12,6 +12,7 @@ import Login from "./pages/login/Login.jsx";
 import Questionnaire from "./pages/questionnaire/Questionnaire.jsx";
 import UserAgreement from "./pages/useragreement/UserAgreement.jsx";
 import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy.jsx";
+import Profile from "./pages/profile/Profile.jsx";
 
 function App() {
   const [count, setCount] = useState(0)
@@ -19,7 +20,8 @@ function App() {
   return (
     <div className="page-container">
       <Header />
-        <Questionnaire />
+        <Home />
+        <Mission />
       <Routes>
 
       </Routes>
