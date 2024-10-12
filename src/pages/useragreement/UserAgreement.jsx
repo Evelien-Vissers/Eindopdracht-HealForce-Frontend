@@ -33,7 +33,7 @@ const UserAgreement = () => {
                 other Members is solely at your own risk.</p>
             <h3 className="user-agreement-subtitle">3. Privacy</h3>
             <p className="user-agreement-text">You agree that you have read, understood and accept the
-                HealForcellc.com <Link to "/privacypolicy">Privacy Policy</Link>. This policy explains collection of
+                HealForcellc.com <Link to="/privacy-policy">Privacy Policy</Link>. This policy explains collection of
                 information from you when using the Platform and its use of and sharing of such information. </p>
             <h3 className="user-agreement-subtitle">4. Limitation of Liability</h3>
             <p className="user-agreement-text">Under no circumstances shall HealForce, its partners, contributors,
@@ -43,7 +43,7 @@ const UserAgreement = () => {
                 Platform.</p>
 
             <h3 className="user-agreement-subtitle">5. Indemnification</h3>
-            <p className="privacy-policy">You agree to indemnify and hold harmless HealForce, its officers, employees, agents, subsidiaries, affiliates and other partners, from and against any claims, actions or demands, liabilities and settlements including without limitation, reasonable legal and accounting fees, resulting from, or alleged to result from, your violation of this Agreement.</p>
+            <p className="user-agreement-text">You agree to indemnify and hold harmless HealForce, its officers, employees, agents, subsidiaries, affiliates and other partners, from and against any claims, actions or demands, liabilities and settlements including without limitation, reasonable legal and accounting fees, resulting from, or alleged to result from, your violation of this Agreement.</p>
 
             <h3 className="user-agreement-subtitle">6. Modifications to this User Agreement</h3>
             <p className="user-agreement-text">We reserve the right to modify this Agreement at any time, and without prior notice, by posting amended terms on this Platform. We encourage you to review this Agreement periodically for any updates or changes, which will have an update effective date. Use of the Platform following any such change constitutes your agreement to follow and be bound by this Agreement as amended.</p>
@@ -51,3 +51,4 @@ const UserAgreement = () => {
         </div>
     )
 }
+export default UserAgreement;
