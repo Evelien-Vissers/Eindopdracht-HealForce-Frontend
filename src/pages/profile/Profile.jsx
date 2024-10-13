@@ -25,24 +25,40 @@ const Profile = () => {
 
     return (
         <div className="profile-page">
-            <div className="profile-header-image">
-                <img src={profile} alt="Profile Header" />
+            <div className="overlay">
+                <div className="start-matching-container">
                 <Link to="/match">
                     <Button text="Start Matching" size="large" type="mint" className="start-matching-btn"></Button>
                 </Link>
+                </div>
             </div>
-            <div className="profile-content">
                 <div className="miniProfile-container">
                     <div className="profile-pic">
                         <img src={profileData.profilePic || 'default-pic.jpg'} alt="Profile" />
                     </div>
-              {/*      <h2 className="profile-title">{profileData.healForceName}</h2>
-                    <p className="profile-paragraph">{profileData.location.city}, {profileData.location.country}</p>
+                    {/*<h2 className="profile-name">[profileData.healForceName}</h2>*/}
+                    <div className="profile-info">
+                        <i className="health-icon"></i>
+                        {/*<p className="profile-text">{profileData.healthChallenge} Warrior</p> */}
+                    </div>
+
+                    <div className="profile-info">
+                        <i className="method-icon"></i>
+                        {/*}<p className="profile-text">{profileData.healingChoice}</p> */}
+                    </div>
+
+                    <div className="profile-info">
+                        <i className="location-icon"></i>
+                        {/*<p className="profile-text">{profileData.location.city}, {profileData.location.country}</p>*/}
+                    </div>
+
+              {/*
+
+
                     <p className="profile-paragraph">{profileData.healthChallenge}</p>
                     <p className="profile-paragraph">{profileData.healingChoice}</p>*/}
                 </div>
             </div>
-        </div>
     );
 };
 

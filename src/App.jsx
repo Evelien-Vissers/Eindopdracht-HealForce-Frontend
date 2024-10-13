@@ -20,8 +20,7 @@ function App() {
   return (
     <div className="page-container">
       <Header />
-        <Home />
-        <Mission />
+        <Profile />
       <Routes>
 
       </Routes>
