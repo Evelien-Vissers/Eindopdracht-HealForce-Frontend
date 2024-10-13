@@ -1,0 +1,25 @@
+.matching-page {
+    background-image: url('../../assets/matching.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.miniProfileMatch-container {
+    background: linear-gradient(to bottom right, mintcream, lightgreen);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: black;
+    width: 300px;
+}
+
+.profile-pic {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 10px;
+}
