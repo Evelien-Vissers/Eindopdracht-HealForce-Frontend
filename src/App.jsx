@@ -21,7 +21,7 @@ function App() {
   return (
     <div className="page-container">
       <Header />
-        <Profile />
+        <Match />
       <Routes>
 
       </Routes>
