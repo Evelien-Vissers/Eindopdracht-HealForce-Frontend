@@ -20,16 +20,19 @@ const Questionnaire = () => {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await fetch("/api/getFirstName");
-                if (!response.ok) {
-                    throw new Error("Network response was not ok");
-                }
-                const data = await response.json();
+                //GET-request om de voornaam van gebruiker op te halen
+                const response = await axios.get("http://localhost:8080/user/{id}/firstName");
+
+                if (!response.status === 200) {
+                    const data = response.data;
+                    //Stel voornaam in, of "User" als fallback
                 setFirstName(data.firstName || "User");
-            }   catch (error) {
-                console.error('Error fetching user data:', error);
+            }   else {
+                console.error('Error fetching user data:', response.status);
             }
-        };
+        } catch (error) {
+            console.error('Error fetching user data:', error);}
+        }
 
         fetchUserData();
         }, []); // Dit gaat runnen zodra het component is 'gemount'
@@ -37,7 +40,7 @@ const Questionnaire = () => {
     const onSubmit = async (profile) => {
         try {
             // API-verzoek om gegevens op te slaan in de database
-            const response = await axios.post('http://localhost:8080/profile', {
+            const profileData = {
                 // Verstuur alle data die door gebruiker is ingevuld
                 dob: profile.dob,
                 city: profile.city,
@@ -50,7 +53,10 @@ const Questionnaire = () => {
                 connectionPreference: profile.connectionPreference,
                 healForceName: profile.healForceName,
                 profilePicture: profile.profilePicture[0],
-            }, {
+                hasCompletedQuestionnaire: true // toevoeging aan de database
+            };
+                //POST-request naar de backend om de profielgegevens op te slaan
+            const response = await axios.post('http://localhost:8080/profile', profileData, {
                 headers: {'Content-Type': 'multipart/form-data'}
                 });
 
@@ -123,13 +129,13 @@ const Questionnaire = () => {
                         {errors.gender && <span className="error-message">This field is required</span>}
                     </div>
                     <div className="image-section-right">
-                        <img src={personal} alt="Person"/>
+                        <img src={personal} alt="Person" className="personal-image"/>
                     </div>
                 </div>
 
                 <div className="questionnaire-section">
                     <div className="image-section-left">
-                        <img src={hospital} alt="Hospital"/>
+                        <img src={hospital} alt="Hospital" className="hospital-image"/>
                     </div>
                     <div className="question-section-right">
                         <label>What is/was your primary health challenge?</label>
@@ -236,18 +242,18 @@ const Questionnaire = () => {
                         {errors.connectionPreference && <span className="error-message">This field is required</span>}
                     </div>
                     <div className="image-section-right">
-                        <img src={choice} alt="Choice"/>
+                        <img src={choice} alt="Choice" className="choice-image"/>
                     </div>
                 </div>
-                <div className="question-section">
+                <div className="upload-section">
                     <label>What would you like your HealForce name to be?</label>
+                    <div className="healforcename-container">
                     <input
                         type="text"
-                        placeholder="Enter your HealForce name"
+                        placeholder="Your HealForce Name"
                         {...register("healForceName", {required: true})}
                     />
                 </div>
-                <div className="upload-section">
                     <label>Lastly, please upload your Heal Force Profile Picture to complete this
                         Questionnaire!</label>
                     <div className="upload-box">
@@ -260,7 +266,9 @@ const Questionnaire = () => {
                             <span className="error-message">{errors.profilePicture.message}</span>}
                     </div>
                 </div>
-                <Button text="Submit" type="submit" className="black" size="large"></Button>
+                <div className="submit-container">
+                <Button text="Submit" type="black" htmlType="submit" size="large"></Button>
+                </div>
             </form>
 
 

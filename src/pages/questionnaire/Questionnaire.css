@@ -34,10 +34,12 @@ label {
     display: block;
 }
 
-img {
-    width: 500px;
+.personal-image, .hospital-image, .choice-image {
+    width: 400px;
     height: auto;
     margin: 20px;
+    border-radius: 20%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 
@@ -91,7 +93,7 @@ img {
 
 .upload-section label {
     font-size: 35px;
-    max-width: 400px;
+    max-width: 500px;
     margin-bottom: 10px;
     text-align: center;
 }
@@ -115,12 +117,12 @@ img {
     cursor: pointer;
 }
 
-
 .error-message {
     color: red;
     font-size: 12px;
     margin-top: -10px;
 }
+
 input[type="text"],
 input[type="date"],
 input[type="month"],
@@ -161,7 +163,7 @@ select {
     margin-bottom: 10px;
     margin-top: 20px;
     width: 100%;
-    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23007BFF" d="M2 0L0 2h4z"/></svg>'); /* Custom arrow icon */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23007BFF" d="M2 0L0 2h4z"/></svg>');
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 12px;
@@ -192,7 +194,7 @@ textarea {
 }
 
 .upload-box {
-    border: 2px solid black; /* Zwarte rand zoals gevraagd */
+    border: 10px black; /* Zwarte rand zoals gevraagd */
     padding: 20px;
     display: flex;
     justify-content: center;
@@ -208,6 +210,11 @@ textarea {
     display: block;
     margin: 0 auto;
     cursor: pointer;
+}
+.submit-container {
+    display: flex;
+    justify-content: center;
+
 }
 
 

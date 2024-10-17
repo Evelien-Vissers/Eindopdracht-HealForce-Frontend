@@ -21,7 +21,9 @@ function App() {
   return (
     <div className="page-container">
       <Header />
-        <Login />
+        <Home />
+        <Mission />
+        <Questionnaire />
       <Routes>
 
       </Routes>
