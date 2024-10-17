@@ -1,7 +1,7 @@
 /* Algemene stijlen voor de registratiepagina */
 .register-page {
     background: linear-gradient(135deg, #40e0d0, #c4cfce);
-    height: 140vh;
+    height: 150vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -13,11 +13,11 @@
     color: white;
     padding: 40px 30px;
     border-radius: 8px;
-    max-width: 500px;
+    max-width: 600px;
     width: 100%;
     text-align: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 60px;
+    margin-bottom: 40px;
 }
 
 .register-title {
