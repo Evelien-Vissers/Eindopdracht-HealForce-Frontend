@@ -48,7 +48,7 @@
     background-image: url('../../assets/warrior.png');
     background-size: cover;
     background-position: center;
-    height: 80vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: flex-end;

@@ -5,18 +5,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 80vh;
+    height: 90vh;
     text-align: center;
     padding: 20px;
     background: linear-gradient(100deg, #92e6d2 40%, #4bc192 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
 }
 
 .home-title {
     font-family: 'Prata', serif;
     font-size: 120px;
     font-weight: bold;
-    margin: 30px;
+    margin-top: 70px;
     color: black;
 }
 
