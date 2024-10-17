@@ -9,7 +9,7 @@ import countries from "../../constants/countryList.json";
 import diseases from "../../constants/chronicDiseaseList.json"
 import Button from "../../components/button/Button.jsx";
 import {useEffect, useState} from "react";
-import ProgressBar from "../../components/progressbar/ProgressBar.jsx";
+import axios from "axios";
 
 const Questionnaire = () => {
     const { register, handleSubmit, control, formState: { errors }} = useForm();
@@ -34,20 +34,31 @@ const Questionnaire = () => {
         fetchUserData();
         }, []); // Dit gaat runnen zodra het component is 'gemount'
 
-    const onSubmit = async (data) => {
+    const onSubmit = async (profile) => {
         try {
             // API-verzoek om gegevens op te slaan in de database
-            const response = await fetch('/api/saveProfileData', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(data),
-            });
+            const response = await axios.post('http://localhost:8080/profile', {
+                // Verstuur alle data die door gebruiker is ingevuld
+                dob: profile.dob,
+                city: profile.city,
+                country: profile.country,
+                gender: profile.gender,
+                healthChallenge: profile.healthChallenge,
+                diagnosisDate: profile.diagnosisDate,
+                hospital: profile.hospital,
+                healingChoice: profile.healingChoice,
+                connectionPreference: profile.connectionPreference,
+                healForceName: profile.healForceName,
+                profilePicture: profile.profilePicture[0],
+            }, {
+                headers: {'Content-Type': 'multipart/form-data'}
+                });
 
-            if (response.ok) {
+            if (response.status === 200) {
                 // Navigeren naar de profielpagina met opgeslagen gegevens
                 navigate('/profile');
             } else {
-                console.error('Failed to save data');
+                console.error('Failed to save data', response.status);
             }
         } catch (error) {
             console.error('Error saving data:', error);
@@ -228,6 +239,14 @@ const Questionnaire = () => {
                         <img src={choice} alt="Choice"/>
                     </div>
                 </div>
+                <div className="question-section">
+                    <label>What would you like your HealForce name to be?</label>
+                    <input
+                        type="text"
+                        placeholder="Enter your HealForce name"
+                        {...register("healForceName", {required: true})}
+                    />
+                </div>
                 <div className="upload-section">
                     <label>Lastly, please upload your Heal Force Profile Picture to complete this
                         Questionnaire!</label>
@@ -241,7 +260,7 @@ const Questionnaire = () => {
                             <span className="error-message">{errors.profilePicture.message}</span>}
                     </div>
                 </div>
-                <Button text="Submit" type="black" size="large"></Button>
+                <Button text="Submit" type="submit" className="black" size="large"></Button>
             </form>
 
 

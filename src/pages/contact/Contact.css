@@ -1,9 +1,9 @@
 .contact {
-    padding: 50px 20px;
     text-align: center;
     position: relative;
     height: 150vh;
     background: linear-gradient(100deg, #92e6d2 40%, #4bc192 100%);
+    padding-bottom: 50px;
 }
 
 h2 {
