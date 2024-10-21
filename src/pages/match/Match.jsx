@@ -10,6 +10,7 @@ const Match = ({ profile }) => {
     const [matches, setMatches] = useState([]); //Lijst met matches
     const [currentIndex, setCurrentIndex] = useState(0); //Houd bij welk profiel wordt getoond
     const [loading, setLoading] = useState(true); //Laadindicator
+    const [error, setError] = useState(null); //Foutmelding
 
     useEffect(() => {
         // Fetch matches van de server obv connectionPreference
@@ -20,6 +21,7 @@ const Match = ({ profile }) => {
             })
             .catch(error => {
                 console.error('Error fetching matches:', error);
+                setError('Error fetching matches. Please try again later.')
                 setLoading(false);
             });
     }, []);
