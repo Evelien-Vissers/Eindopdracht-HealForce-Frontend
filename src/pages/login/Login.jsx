@@ -1,5 +1,4 @@
 import './Login.css';
-import jwt_decode from 'jwt-decode';
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Button from "../../components/button/Button.jsx";

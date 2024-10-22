@@ -1,0 +1,58 @@
+.admin-container {
+    padding: 20px;
+    background: linear-gradient(to right, #32a89e, #98ff98); /* Gebaseerd op je turquoise-mint voorkeur */
+    color: white;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.admin-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.get-users-button {
+    margin-bottom: 20px;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.user-list {
+    margin-top: 20px;
+}
+
+.user-list-header, .user-list-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.user-list-header {
+    font-weight: bold;
+    background-color: #32a89e;
+}
+
+.user-list-row {
+    background-color: #222;
+}
+
+.delete-button {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #ff6b6b; /* Kan worden aangepast afhankelijk van de styling in je Button component */
+}
+
+.delete-button:hover {
+    background-color: #e65a5a;
+}

@@ -14,6 +14,7 @@ import UserAgreement from "./pages/useragreement/UserAgreement.jsx";
 import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy.jsx";
 import Profile from "./pages/profile/Profile.jsx";
 import Match from "./pages/match/Match.jsx";
+import Admin from "./pages/admin/Admin.jsx"
 
 function App() {
   const [count, setCount] = useState(0)
@@ -22,10 +23,8 @@ function App() {
     <div className="page-container">
       <Header />
         <Home />
-        <Mission />
         <Match />
       <Routes>
-
       </Routes>
       <Footer />
 

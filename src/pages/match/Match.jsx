@@ -31,33 +31,47 @@ const Match = ({ profile }) => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % matches.length);
     };
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
+    const renderContent = () => {
+        if (loading) {
+            return <div>Loading...</div>;
+        }
+        if (error) {
+            return <div>Error fetching matches. Please try again later.</div>;
+        }
 
-    if (matches.length === 0) {
-        return <div>No matches found</div>;
-    }
+        if (matches.length === 0) {
+            return <div>No matches found</div>;
+        }
 
-    const currentMatch = matches[currentIndex]; //Haal het huidige profiel op dat getoond moet worden
+        const currentMatch = matches[currentIndex]; //Haal het huidige profiel op dat getoond moet worden
 
+
+        return (
+            <div className="matching-page">
+                <Button text="Go Back To My Profile" type="mint" size="large" link="/profile"/>
+                <div className="miniProfileMatch-container">
+                    <div className="profile-pic-container">
+                        <img src={currentMatch.profilePicture || 'default-pic.jpg'} alt="Profile"
+                             className="profile-pic"/>
+                    </div>
+                    <div className="match-details">
+                        <h3>{currentMatch.healForceName}</h3>
+                        <p><img src={location} alt="Location icon"/> {currentMatch.city}, {currentMatch.country}</p>
+                        <p><img src={warrior} alt="HealthChallenge icon"/> {currentMatch.healthChallenge} Warrior</p>
+                        <p><img src={method} alt="HealingChoice icon"/> Healing Choice: {currentMatch.healingChoice}</p>
+                    </div>
+                </div>
+            </div>
+        );
+    };
 
     return (
         <div className="matching-page">
-            <Button text="Go Back To My Profile" type="mint" size="large" link="/profile" />
-            <div className="miniProfileMatch-container">
-                <div className="profile-pic-container">
-                    <img src={currentMatch.profilePicture || 'default-pic.jpg'} alt="Profile" className="profile-pic" />
-                </div>
-                <div className="match-details">
-                    <h3>{currentMatch.healForceName}</h3>
-                    <p><img src={location} alt="Location icon" /> {currentMatch.city}, {currentMatch.country}</p>
-                    <p><img src={warrior} alt="HealthChallenge icon" /> {currentMatch.healthChallenge} Warrior</p>
-                    <p><img src={method} alt="HealingChoice icon" /> Healing Choice: {currentMatch.healingChoice}</p>
-            </div>
+            <Button text="Go Back To My Profile" type="mint" link="/profile"/>
+            {renderContent()}
         </div>
-        </div>
-    );
-};
+    )
+}
+
 
 export default Match;
