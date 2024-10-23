@@ -23,6 +23,7 @@ function App() {
     <div className="page-container">
       <Header />
         <Home />
+        <Profile />
         <Match />
       <Routes>
       </Routes>
