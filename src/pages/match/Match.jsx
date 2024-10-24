@@ -12,6 +12,15 @@ const Match = ({ profile }) => {
     const [loading, setLoading] = useState(true); //Laadindicator
     const [error, setError] = useState(null); //Foutmelding
 
+    const defaultMatch = {
+        profilePicture: 'default-pic.jpg',
+        healForceName: 'N/A',
+        city: 'Unknown',
+        country: 'Unknown',
+        healthChallenge: 'Unknown',
+        healingChoice: 'Unknown',
+    };
+
     useEffect(() => {
         // Fetch matches van de server obv connectionPreference
         axios.get('http://localhost:8080/matches')
@@ -43,23 +52,24 @@ const Match = ({ profile }) => {
             return <div>No matches found</div>;
         }
 
-        const currentMatch = matches[currentIndex]; //Haal het huidige profiel op dat getoond moet worden
-
+        const currentMatch = matches.length > 0 ? matches[currentIndex] : defaultMatch; //Haal het huidige profiel op dat getoond moet worden
 
         return (
-            <div className="matching-page">
-                <Button text="Go Back To My Profile" type="mint" size="large" link="/profile"/>
-                <div className="miniProfileMatch-container">
-                    <div className="profile-pic-container">
-                        <img src={currentMatch.profilePicture || 'default-pic.jpg'} alt="Profile"
-                             className="profile-pic"/>
-                    </div>
-                    <div className="match-details">
-                        <h3>{currentMatch.healForceName}</h3>
-                        <p><img src={location} alt="Location icon"/> {currentMatch.city}, {currentMatch.country}</p>
-                        <p><img src={warrior} alt="HealthChallenge icon"/> {currentMatch.healthChallenge} Warrior</p>
-                        <p><img src={method} alt="HealingChoice icon"/> Healing Choice: {currentMatch.healingChoice}</p>
-                    </div>
+            <div className="miniProfileMatch-container">
+                <div className="profile-pic-container">
+                    <img src={currentMatch.profilePicture || 'default-pic.jpg'} alt="Profile"
+                         className="profile-pic"/>
+                </div>
+                <div className="match-details">
+                    <h3>{currentMatch.healForceName}</h3>
+                    <p><img src={location} alt="Location icon"/> {currentMatch.city}, {currentMatch.country}</p>
+                    <p><img src={warrior} alt="HealthChallenge icon"/> {currentMatch.healthChallenge} Warrior</p>
+                    <p><img src={method} alt="HealingChoice icon"/> Healing Choice: {currentMatch.healingChoice}</p>
+                </div>
+                <div className="matching-page">
+                    <Button text="Go Back To My Profile" type="mint" size="large" link="/profile"/>
+
+
                 </div>
             </div>
         );

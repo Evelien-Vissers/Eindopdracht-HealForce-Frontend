@@ -1,3 +1,3 @@
 export function redirectToHome() {
-    window.location.href = '/home';
+    window.location.href = '/';
 }
