@@ -40,23 +40,21 @@ const Questionnaire = () => {
     const onSubmit = async (profile) => {
         try {
             // API-verzoek om gegevens op te slaan in de database
-            const profileData = {
-                // Verstuur alle data die door gebruiker is ingevuld
-                dob: profile.dob,
-                city: profile.city,
-                country: profile.country,
-                gender: profile.gender,
-                healthChallenge: profile.healthChallenge,
-                diagnosisDate: profile.diagnosisDate,
-                hospital: profile.hospital,
-                healingChoice: profile.healingChoice,
-                connectionPreference: profile.connectionPreference,
-                healForceName: profile.healForceName,
-                profilePicture: profile.profilePicture[0],
-                hasCompletedQuestionnaire: true // toevoeging aan de database
-            };
+            const formData = new FormData();
+                formData.append("dob", profile.dob);
+                formData.append("city", profile.city);
+                formData.append("country", profile.country);
+                formData.append("gender", profile.gender);
+                formData.append("healthChallenge", profile.healthChallenge);
+                formData.append("diagnosisDate", profile.diagnosisDate);
+                formData.append("hospital", profile.hospital);
+                formData.append("healingChoice", profile.healingChoice);
+                formData.append("connectionPreference", profile.connectionPreference);
+                formData.append("healForceName", profile.healForceName);
+                formData.append("profilePicture", profile.profilePicture[0]);
+                formData.append("hasCompletedQuestionnaire", true);
                 //POST-request naar de backend om de profielgegevens op te slaan
-            const response = await axios.post('http://localhost:8080/profile', profileData, {
+            const response = await axios.post('http://localhost:8080/profile', formData, {
                 headers: {'Content-Type': 'multipart/form-data'}
                 });
 
