@@ -1,11 +1,13 @@
 import './Login.css';
-import { useState } from 'react';
+import {useContext, useState} from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Button from "../../components/button/Button.jsx";
 import axios from "axios";
+import {AuthContext} from "../../authentication/AuthContext.js";
 
 
 const Login = () => {
+    const { login } = useContext(AuthContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -19,21 +21,18 @@ const Login = () => {
         };
 
         try {
-            // POST-request om gebruiker in te loggen
             const loginResponse = await axios.post('http://localhost:8080/users/login', loginData);
 
             if (loginResponse.status === 200) {
                 const {token} = loginResponse.data;
 
-                localStorage.setItem('authToken', token);
+                login(token);
 
-                //GET-request om het profiel van de gebruiker op te halen
                 const profileResponse = await axios.get('http://localhost:8080/profile/{profileID}/hasCompletedQuestionnaire', {
                     headers: {
                     Authorization: `Bearer ${token}`,
                 },
             });
-
                 // Check of de questionnaire is voltooid
                 const { hasCompletedQuestionnaire } = profileResponse.data;
                 if (hasCompletedQuestionnaire) {

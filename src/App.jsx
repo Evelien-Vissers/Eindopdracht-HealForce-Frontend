@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import {Routes, Route, Router} from 'react-router-dom'
 import './App.css'
 import Header from './components/header/Header.jsx'
 import Footer from './components/footer/Footer.jsx'
@@ -12,15 +12,18 @@ import UserAgreement from "./pages/useragreement/UserAgreement.jsx";
 import PrivacyPolicy from "./pages/privacypolicy/PrivacyPolicy.jsx";
 import Profile from "./pages/profile/Profile.jsx";
 import Match from "./pages/match/Match.jsx";
+import {AuthProvider} from "./authentication/AuthContext.js";
+import ProtectedRoute from "./authentication/ProtectedRoute.js";
 
 
 function App() {
 
   return (
     <div className="page-container">
-      <Header />
-        <Profile />
-      <Routes>
+        <AuthProvider>
+            <Router>
+        <Header />
+            <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/mission" element={<Mission/>} />
           <Route path="/contact" element={<Contact/>} />
@@ -28,12 +31,22 @@ function App() {
           <Route path="/useragreement" element={<UserAgreement/>}  />
           <Route path="/register" element={<Register/>} />
           <Route path="/login" element={<Login/>} />
-          <Route path="/questionnaire" element={<Questionnaire/>} />
-          <Route path="/profile" element={<Profile/>} />
-          <Route path="/match" element={<Match/>} />
+          <Route path="/questionnaire" element={
+              <ProtectedRoute>
+              <Questionnaire/>
+              </ProtectedRoute>} />
+          <Route path="/profile" element={
+              <ProtectedRoute>
+                  <Profile/>
+              </ProtectedRoute>} />
+          <Route path="/match" element={
+              <ProtectedRoute>
+                  <Match/>
+              </ProtectedRoute>} />
       </Routes>
       <Footer />
-
+            </Router>
+        </AuthProvider>
     </div>
   )
 }
