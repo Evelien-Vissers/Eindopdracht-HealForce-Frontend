@@ -1,5 +1,6 @@
-import React, {createContext, useState, useEffect} from "react";
+import {createContext, useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
+
 
 export const AuthContext = createContext();
 
@@ -22,7 +23,6 @@ export const AuthProvider = ({ children }) => {
     const logout = () => {
         localStorage.removeItem("token");
         setIsAuthenticated(false);
-        setIsAuthenticated(false);
         navigate('/login');
     };
 
@@ -31,4 +31,5 @@ export const AuthProvider = ({ children }) => {
             {children}
         </AuthContext.Provider>
     )
+
 }

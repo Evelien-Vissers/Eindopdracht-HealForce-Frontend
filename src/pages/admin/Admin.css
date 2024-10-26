@@ -1,58 +1,61 @@
-.admin-container {
-    padding: 20px;
-    background: linear-gradient(to right, #32a89e, #98ff98); /* Gebaseerd op je turquoise-mint voorkeur */
-    color: white;
+.admin-page {
     text-align: center;
-    min-height: 100vh;
+    min-height: 500vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 100px;
 }
 
 .admin-title {
     font-size: 2.5rem;
     margin-bottom: 20px;
+    text-align: center;
+}
+.button-container {
+    margin: 20px;
+    text-align: center;
 }
 
-.get-users-button {
-    margin-bottom: 20px;
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
+.admin-table {
+    width: 800px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    margin-bottom: 100px;
+}
+.admin-table.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.user-list {
-    margin-top: 20px;
+.admin-table th, .admin-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
 }
 
-.user-list-header, .user-list-row {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-    padding: 10px;
-    background-color: black;
-    color: white;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.user-list-header {
+.admin-table th {
+    background-color: #f2f2f2;
+    color: #333;
     font-weight: bold;
-    background-color: #32a89e;
 }
 
-.user-list-row {
-    background-color: #222;
+.admin-table tbody tr:hover {
+    background-color: #f9f9f9;
 }
 
 .delete-button {
-    display: inline-block;
-    padding: 5px 10px;
-    font-size: 0.9rem;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
     cursor: pointer;
-    border-radius: 5px;
-    background-color: #ff6b6b; /* Kan worden aangepast afhankelijk van de styling in je Button component */
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
 
 .delete-button:hover {
-    background-color: #e65a5a;
+    background-color: #c0392b;
 }

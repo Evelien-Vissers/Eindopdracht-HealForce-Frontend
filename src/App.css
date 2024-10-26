@@ -20,7 +20,6 @@ html, body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  /* Gradient from neon blue (#1b03a3) to mint green (#98ff98) */
 }
 
 .App > .main-content,
@@ -33,5 +32,11 @@ h1 {
   font-family: 'Rubik', sans-serif;
   font-size: 4rem;
 }
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 
 

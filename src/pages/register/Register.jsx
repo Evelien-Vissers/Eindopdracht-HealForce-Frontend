@@ -60,7 +60,7 @@ const Register = () => {
                         className="form-input"
                         placeholder="Your Last Name"
                         value={lastName}
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={(e) => setLastName(e.target.value)}
                         required />
 
                     <label htmlFor="email" className="form-label">Email:</label>

@@ -3,7 +3,7 @@ import {useContext, useState} from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Button from "../../components/button/Button.jsx";
 import axios from "axios";
-import {AuthContext} from "../../authentication/AuthContext.js";
+import {AuthContext} from "../../authentication/AuthContext.jsx";
 
 
 const Login = () => {
