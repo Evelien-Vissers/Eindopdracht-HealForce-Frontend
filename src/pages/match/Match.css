@@ -4,17 +4,43 @@
     background-position: center;
     height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 100px;
 }
 
-.miniProfileMatch-container {
-    background: linear-gradient(to bottom right, mintcream, lightgreen);
-    padding: 20px;
-    border-radius: 10px;
+.button-container {
+    position: absolute;
+    top: 200px;
+    right: 20px;
+}
+
+.match-container {
+    background: linear-gradient(-150deg, #40a8e0, #4bc192);
+    padding: 50px;
+    border-radius: 50px;
+    width: 450px;
     text-align: center;
-    color: black;
-    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    margin-left: 150px;
+}
+
+.matchbutton-container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.profile-pic-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
 }
 
 .profile-pic {
@@ -22,4 +48,38 @@
     width: 150px;
     height: 150px;
     margin-bottom: 10px;
+    border: 4px solid lightseagreen;
+}
+.match-details {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+}
+
+.heal-force-name {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+
+.icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+
+.error-message {
+    color: red;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    text-align: center;
 }

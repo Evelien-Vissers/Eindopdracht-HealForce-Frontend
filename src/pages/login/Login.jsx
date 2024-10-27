@@ -24,23 +24,29 @@ const Login = () => {
             const loginResponse = await axios.post('http://localhost:8080/users/login', loginData);
 
             if (loginResponse.status === 200) {
-                const {token} = loginResponse.data;
+                const {token, role} = loginResponse.data;
 
                 login(token);
+                localStorage.setItem('userRole', role);
 
-                const profileResponse = await axios.get('http://localhost:8080/profile/{profileID}/hasCompletedQuestionnaire', {
-                    headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-                // Check of de questionnaire is voltooid
-                const { hasCompletedQuestionnaire } = profileResponse.data;
-                if (hasCompletedQuestionnaire) {
-                // Navigeer naar profiel-pagina als de questionnaire is voltooid
-                    navigate('/profile');
+                if (role === "ROLE_ADMIN") {
+                    navigate('/admin');
                 } else {
-                // Navigeer naar de Questionnaire-pagina als deze nog niet voltooid is
-                    navigate('/questionnaire');
+
+                    const profileResponse = await axios.get('http://localhost:8080/profile/{profileID}/hasCompletedQuestionnaire', {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    });
+                    // Check of de questionnaire is voltooid
+                    const {hasCompletedQuestionnaire} = profileResponse.data;
+                    if (hasCompletedQuestionnaire) {
+                        // Navigeer naar profiel-pagina als de questionnaire is voltooid
+                        navigate('/profile');
+                    } else {
+                        // Navigeer naar de Questionnaire-pagina als deze nog niet voltooid is
+                        navigate('/questionnaire');
+                    }
                 }
         } else {
             alert('Login failed. Please check your credentials');

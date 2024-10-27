@@ -1,5 +1,5 @@
 .login-page {
-    background: linear-gradient(135deg, #40e0d0, #c4cfce); /* Turquoise naar mintgroene gradient */
+    background: linear-gradient(135deg, #40e0d0, #c4cfce);
     height: 120vh;
     display: flex;
     justify-content: center;
