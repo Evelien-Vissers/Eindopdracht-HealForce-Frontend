@@ -1,0 +1,49 @@
+.match-list-container {
+    position: absolute;
+    top: 400px;
+    right: 50px;
+    width: 500px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #333;
+}
+
+.match-list-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.match-list-table th, .match-list-table td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.match-list-table th {
+    background-color: rgba(200, 200, 200, 0.5);
+    color: #333;
+    font-weight: bold;
+}
+
+.profile-thumbnail {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.view-profile-btn {
+    background-color: #40a8e0;
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.view-profile-btn:hover {
+    background-color: #3b8dbd;
+}

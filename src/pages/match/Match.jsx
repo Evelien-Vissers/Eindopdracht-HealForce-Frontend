@@ -4,9 +4,12 @@ import warrior from '../../assets/matchwarrioricon.png'
 import method from '../../assets/matchhealingicon.png'
 import Button from "../../components/button/Button.jsx";
 import MatchButton from "../../components/matchbutton/MatchButton.jsx";
+import MatchListContainer from "../../components/matchlistcontainer/MatchListContainer.jsx";
+import {useState} from "react";
 
 
 const Match = ( ) => {
+    const [matches, setMatches] = useState([]);
     const currentMatch = {
         profilePicture: 'default-pic.jpg',
         healForceName: 'N/A',
@@ -20,7 +23,8 @@ const Match = ( ) => {
     };
 
     const handleYes = () => {
-        console.log("Say Yes to Match!")
+        console.log("Say Yes to Match!");
+        setMatches((prevMatches) => [...prevMatches, currentMatch]);
     };
 
         return (
@@ -46,6 +50,7 @@ const Match = ( ) => {
                     <MatchButton text="Yes" onClick={handleYes}/>
                 </div>
             </div>
+                <MatchListContainer matches={matches} />
             </div>
 
     );
