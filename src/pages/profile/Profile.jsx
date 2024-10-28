@@ -16,7 +16,7 @@ const Profile = () => {
 
     useEffect(() => {
         // Fetch profile data from database
-        axios.get('http://localhost:8080/profiles/2')
+        axios.get('http://localhost:8080/profiles/{id}')
             .then(response => {
                 setProfileData(response.data);
                 setLoading(false);

@@ -33,7 +33,7 @@ const Login = () => {
                     navigate('/admin');
                 } else {
 
-                    const profileResponse = await axios.get('http://localhost:8080/profile/{profileID}/hasCompletedQuestionnaire', {
+                    const profileResponse = await axios.get('http://localhost:8080/profile/{id}/hasCompletedQuestionnaire', {
                         headers: {
                             Authorization: `Bearer ${token}`,
                         },

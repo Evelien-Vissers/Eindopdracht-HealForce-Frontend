@@ -22,8 +22,7 @@ function App() {
   return (
     <div className="page-container">
         <Header />
-        <Match />
-        {/* <AuthProvider>
+        <AuthProvider>
           <Routes>
 
           <Route path="/" element={<Home/>} />
@@ -33,6 +32,7 @@ function App() {
           <Route path="/useragreement" element={<UserAgreement/>}  />
           <Route path="/register" element={<Register/>} />
           <Route path="/login" element={<Login/>} />
+          <Route path="/admin" element={<Admin/>} />
               <Route path="/questionnaire" element={
                <ProtectedRoute>
               <Questionnaire/>
@@ -46,7 +46,7 @@ function App() {
                   <Match/>
               </ProtectedRoute>} />
       </Routes>
-                </AuthProvider>*/}
+                </AuthProvider>
       <Footer />
 
     </div>

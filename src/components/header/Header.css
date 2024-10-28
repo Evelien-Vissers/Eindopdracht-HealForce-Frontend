@@ -6,6 +6,7 @@
     padding: 10px 20px;
     position: relative;
     border-bottom: 30px solid black;
+    flex-wrap: wrap;
 }
 .logo {
    flex: 1;
@@ -34,6 +35,7 @@ nav {
     list-style: none;
     padding: 0;
     margin: 0;
+    flex-wrap: wrap;
 }
 
 .nav-links a {
@@ -44,23 +46,22 @@ nav {
     transition: color 0.5s ease;
 }
 
-/* Hover effect voor underline */
 .nav-links a::after {
     content: '';
     position: absolute;
     width: 0;
     height: 2px;
     background-color: black;
-    bottom: -5px; /* plaats de lijn net onder de tekst */
+    bottom: -5px;
     left: 0;
     transition: width 0.3s ease;
 }
 
 .nav-links a:hover::after {
-    width: 100%; /* onderstreept volledig bij hover */
+    width: 100%;
 }
 
 .nav-links a:hover {
-    color: #555; /* donkergrijze kleur bij hover */
+    color: #555;
 }
 
