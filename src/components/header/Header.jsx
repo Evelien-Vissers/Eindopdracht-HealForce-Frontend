@@ -2,11 +2,12 @@ import './Header.css'
 import logo from '../../assets/logo.png'
 import {Link} from "react-router-dom";
 import Button from "../button/Button.jsx";
+import { redirectToHome } from '../../helpers/logoClickHelper.js'
 
 const Header = () => {
     return (
         <header className="header">
-            <div className="logo">
+            <div className="logo" onClick={redirectToHome}>
                 <img src={logo} alt="Heal Force Logo"/>
             </div>
             <nav>

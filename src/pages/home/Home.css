@@ -5,7 +5,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 80vh;
+    height: 90vh;
     text-align: center;
     padding: 20px;
     background: linear-gradient(100deg, #92e6d2 40%, #4bc192 100%);
@@ -15,7 +15,7 @@
     font-family: 'Prata', serif;
     font-size: 120px;
     font-weight: bold;
-    margin: 30px;
+    margin-top: 70px;
     color: black;
 }
 
@@ -25,7 +25,7 @@
     margin-bottom: 30px;
     color: dimgrey;
     position: relative;
-    overflow: inherit; /* Verberg het deel van de tekst dat buiten het zichtbare gebied valt */
+    animation: fadeInGrow 3s ease-out forwards;
 }
 
 .home-second-section {
@@ -36,20 +36,26 @@
 }
 
 .second-title {
-    font-size: 30px;
+    font-family: Prata, sans-serif;
+    font-size: 50px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin: 30px;
 }
 
 .second-paragraph {
     font-size: 18px;
     line-height: 1.6;
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
-@keyframes slideReveal {
-    to {
-        transform: translateX(100%);
+@keyframes fadeInGrow {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
     }
 }

@@ -1,0 +1,221 @@
+.questionnaire-page {
+    background: linear-gradient(135deg, #40e0d0, #c4cfce);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.questionnaire-form {
+    width: 100%;
+    max-width: 1000px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.questionnaire-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.question-section-left, .question-section-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+}
+
+.personal-image, .hospital-image, .choice-image {
+    width: 400px;
+    height: auto;
+    margin: 20px;
+    border-radius: 20%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+
+.image-section-left, .image-section-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Ruimte tussen checkbox en de tekst */
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px; /* Ruimte tussen elke checkbox-vraag */
+    font-weight: normal;
+}
+
+.checkbox-group label input[type="radio"],
+.checkbox-group label input[type="checkbox"] {
+    margin-right: 15px;
+}
+
+
+.location-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.location-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.upload-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.upload-section label {
+    font-size: 35px;
+    max-width: 500px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.upload-box {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 300px;
+    background-color: #010403;
+    border-radius: 70px;
+    margin-bottom: 10px;
+}
+
+.upload-box input[type="file"] {
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: -10px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="month"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;  /* Iets grotere padding om het veld hoger te maken */
+    border: 1px solid #ccc; /* Lichte grijze rand */
+    border-radius: 10px; /* Ronde randen voor een vriendelijker uiterlijk */
+    background-color: #f9f9f9; /* Lichtgrijze achtergrond voor zachtheid */
+    font-size: 16px; /* Iets grotere tekst voor betere leesbaarheid */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Zachte schaduw voor diepte */
+    transition: all 0.3s ease-in-out; /* Soepele overgang voor hover/focus effecten */
+    margin-bottom: 20px; /* Ruimte tussen de velden */
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+select:focus,
+textarea:focus {
+    outline: none; /* Verwijder de standaard outline */
+    border: 1px solid #007BFF; /* Blauwe rand op focus voor een actiever uiterlijk */
+    box-shadow: 0px 4px 8px rgba(0, 123, 255, 0.3); /* Grotere schaduw bij focus */
+    margin-bottom: 10px;
+}
+
+select {
+    appearance: none; /* Verberg de standaard dropdown-pijl */
+    background-color: white; /* Zorgt ervoor dat de achtergrond wit wordt */
+    color: #333; /* Zwarte tekst voor goede leesbaarheid */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    width: 100%;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23007BFF" d="M2 0L0 2h4z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+}
+
+select:focus {
+    outline: none;
+    border: 1px solid #007BFF;
+    box-shadow: 0px 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+textarea {
+    resize: vertical; /* Maak het mogelijk om alleen verticaal de textarea aan te passen */
+    height: 150px; /* Grotere hoogte voor meer ruimte in de textarea */
+}
+
+.upload-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.upload-section label {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.upload-box {
+    border: 10px black; /* Zwarte rand zoals gevraagd */
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 150px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.upload-box input[type="file"] {
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.submit-container {
+    display: flex;
+    justify-content: center;
+
+}
+
+
+
