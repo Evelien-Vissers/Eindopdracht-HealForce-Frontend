@@ -75,11 +75,10 @@ const Questionnaire = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="questionnaire-form">
                 <div className="questionnaire-section">
                     <div className="question-section-left">
-                        <label>Hi {firstName}! When were you born?</label>
+                        <label htmlFor="dob">Hi {firstName}! When were you born?</label>
                         <input
                             type="date"
-                            id="dob"
-                            {...register("dob", {required: true})}
+                            id="dob" {...register("dob", {required: true})}
                         />
                         {errors.dob && <span className="error-message">This field is required</span>}
 
@@ -88,7 +87,7 @@ const Questionnaire = () => {
                                 <label htmlFor="city">Where are you currently living?</label>
                                 <input
                                     type="text"
-                                    id="id"
+                                    id="city"
                                     placeholder="City"
                                     {...register("city", {required: true})}
                                 />
@@ -109,14 +108,14 @@ const Questionnaire = () => {
                             </div>
                         </div>
 
-                        <label>What gender do you identify with?</label>
+                        <label htmlFor="gender">What gender do you identify with?</label>
                         <Controller
                             name="gender"
                             control={control}
                             defaultValue=""
                             rules={{required: "This field is required"}}
                             render={({field}) => (
-                                <select {...field}>
+                                <select id="gender" {...field}>
                                     <option value="">Select your gender</option>
                                     <option value="female">Female</option>
                                     <option value="male">Male</option>
@@ -136,9 +135,9 @@ const Questionnaire = () => {
                         <img src={hospital} alt="Hospital" className="hospital-image"/>
                     </div>
                     <div className="question-section-right">
-                        <label>What is/was your primary health challenge?</label>
+                        <label htmlFor="healthChallenge">What is/was your primary health challenge?</label>
 
-                        <select {...register("healthChallenge", {required: "This field is required"})}>
+                        <select id="healthChallenge" {...register("healthChallenge", {required: "This field is required"})}>
                             <option value="">Select your primary health challenge</option>
                             {diseases.map((disease, index) => (
                                 <option key={index} value={disease.name}>
@@ -148,17 +147,19 @@ const Questionnaire = () => {
                         </select>
                         {errors.healthChallenge && <span className="error-message">This field is required</span>}
 
-                        <label>When were you diagnosed or did you find out about this condition?</label>
+                        <label htmlFor="diagnosisDate">When were you diagnosed or did you find out about this condition?</label>
                         <input
                             type="month"
+                            id="diagnosisDate"
                             {...register("diagnosisDate", {required: true})}
                         />
                         {errors.diagnosisDate && <span className="error-message">This field is required</span>}
 
-                        <label>At what hospital(s) have you been treated or are you being treated for this
+                        <label htmlFor="hospital">At what hospital(s) have you been treated or are you being treated for this
                             condition?</label>
                         <input
                             type="text"
+                            id="hospital"
                             {...register("hospital", {required: true})}
                         />
                         {errors.hospital && <span className="error-message">This field is required</span>}
@@ -167,31 +168,34 @@ const Questionnaire = () => {
 
                 <div className="questionnaire-section">
                     <div className="question-section-left">
-                        <label>Please choose one of the below options that describes your choice of healing the
+                        <label htmlFor="healingChoice">Please choose one of the below options that describes your choice of healing the
                             best:</label>
                         <div className="checkbox-group">
-                            <label>
+                            <label htmlFor="healingChoiceConventional">
                                 <input
                                     type="radio"
                                     value="conventional"
+                                    id="healingChoiceConventional"
                                     {...register("healingChoice", {required: true})}
                                 />
                                 I only use conventional healing methods
                             </label>
 
-                            <label>
+                            <label htmlFor="healingChoiceMix">
                                 <input
                                     type="radio"
                                     value="mix"
+                                    id="healingChoiceMix"
                                     {...register("healingChoice", {required: true})}
                                 />
                                 I use a mix of both conventional and alternative healing methods.
                             </label>
 
-                            <label>
+                            <label htmlFor="healingChoiceAlternative">
                                 <input
                                     type="radio"
                                     value="alternative"
+                                    id="healingChoiceAlternative"
                                     {...register("healingChoice", {required: true})}
                                 />
                                 I only use alternative healing methods.
@@ -199,39 +203,43 @@ const Questionnaire = () => {
                         </div>
                         {errors.healingChoice && <span className="error-message">This field is required</span>}
 
-                        <label>With what kind of people would you like to connect on Heal Force?</label>
+                        <label htmlFor="connectionPreference">With what kind of people would you like to connect on Heal Force?</label>
                         <div className="checkbox-group">
-                            <label>
+                            <label htmlFor="connectionPreferenceConventional">
                                 <input
                                     type="radio"
                                     value="conventional"
+                                    id="connectionPreferenceConventional"
                                     {...register("connectionPreference", {required: true})}
                                 />
                                 People who only use conventional healing methods
                             </label>
 
-                            <label>
+                            <label htmlFor="connectionPreferenceMix">
                                 <input
                                     type="radio"
                                     value="mix"
+                                    id="connectionPreferenceMix"
                                     {...register("connectionPreference", {required: true})}
                                 />
                                 People who use both conventional and alternative healing methods
                             </label>
 
-                            <label>
+                            <label htmlFor="connectionPreferenceAlternative">
                                 <input
                                     type="radio"
                                     value="alternative"
+                                    id="connectionPreferenceAlternative"
                                     {...register("connectionPreference", {required: true})}
                                 />
                                 People who only use alternative healing methods
                             </label>
 
-                            <label>
+                            <label htmlFor="connectionPreferenceAllTypes">
                                 <input
                                     type="radio"
                                     value="all"
+                                    id="connectionPreferenceAllTypes"
                                     {...register("connectionPreference", {required: true})}
                                 />
                                 With all types of people
@@ -244,20 +252,22 @@ const Questionnaire = () => {
                     </div>
                 </div>
                 <div className="upload-section">
-                    <label>What would you like your HealForce name to be?</label>
+                    <label htmlFor="healForceName">What would you like your HealForce name to be?</label>
                     <div className="healforcename-container">
                     <input
                         type="text"
+                        id="healForceName"
                         placeholder="Your HealForce Name"
                         {...register("healForceName", {required: true})}
                     />
                 </div>
-                    <label>Lastly, please upload your Heal Force Profile Picture to complete this
+                    <label htmlFor="profilePicture">Lastly, please upload your Heal Force Profile Picture to complete this
                         Questionnaire!</label>
                     <div className="upload-box">
                         <input
                             type="file"
                             accept="image/*"
+                            id="profilePicture"
                             {...register("profilePicture", {required: "Profile picture is required"})}
                         />
                         {errors.profilePicture &&
