@@ -1,6 +1,5 @@
 import './Login.css';
 import {useContext, useState} from 'react';
-import { useNavigate, Link } from 'react-router-dom';
 import Button from "../../components/button/Button.jsx";
 import axios from "axios";
 import {AuthContext} from "../../authentication/AuthContext.jsx";
@@ -10,7 +9,7 @@ const Login = () => {
     const { login } = useContext(AuthContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -26,28 +25,7 @@ const Login = () => {
             if (loginResponse.status === 200) {
                 const {token, role} = loginResponse.data;
 
-                login(token);
-                localStorage.setItem('userRole', role);
-
-                if (role === "ROLE_ADMIN") {
-                    navigate('/admin');
-                } else {
-
-                    const profileResponse = await axios.get('http://localhost:8080/profile/{id}/hasCompletedQuestionnaire', {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                        },
-                    });
-                    // Check of de questionnaire is voltooid
-                    const {hasCompletedQuestionnaire} = profileResponse.data;
-                    if (hasCompletedQuestionnaire) {
-                        // Navigeer naar profiel-pagina als de questionnaire is voltooid
-                        navigate('/profile');
-                    } else {
-                        // Navigeer naar de Questionnaire-pagina als deze nog niet voltooid is
-                        navigate('/questionnaire');
-                    }
-                }
+                login(token, role);
         } else {
             alert('Login failed. Please check your credentials');
         }
