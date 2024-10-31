@@ -1,4 +1,5 @@
 import {createContext, useState, useEffect, useContext} from "react";
+import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
@@ -6,24 +7,30 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [role, setRole] = useState(null);
+    const [id, setId] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
         const token = localStorage.getItem("token");
         const storedRole = localStorage.getItem("role");
+        const storedId = localStorage.getItem("id");
+
         if (token) {
             setIsAuthenticated(true);
             setRole(storedRole);
+            setId(storedId);
         }
     }, []);
 
-    const login = (token, userRole) => {
+    const login = (token, userRole, id) => {
         localStorage.setItem("token", token);
         localStorage.setItem("role", userRole);
+        localStorage.setItem("id", id);
         setIsAuthenticated(true);
         setRole(userRole);
+        setId(id);
 
-        if (userRole === "admin") {
+        if (userRole === "ADMIN") {
             navigate('/admin');
         } else {
         navigate('/questionnaire');
@@ -32,17 +39,23 @@ export const AuthProvider = ({ children }) => {
     const logout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("role");
+        localStorage.removeItem("id");
         setIsAuthenticated(false);
         setRole(null);
+        setId(null);
         navigate('/login');
     };
 
     return (
-        <AuthContext.Provider value={{isAuthenticated, role, login, logout}}>
+        <AuthContext.Provider value={{isAuthenticated, role, id, login, logout}}>
             {children}
         </AuthContext.Provider>
     )
 }
+AuthProvider.propTypes = {
+    children: PropTypes.node.isRequired,
+};
+
 export function useAuth() {
     return useContext(AuthContext);
 }

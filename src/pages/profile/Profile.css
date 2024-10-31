@@ -84,10 +84,13 @@
     z-index: 4;
 }
 
-.adjust-profile-container {
+.profilebuttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
     position: absolute;
-    top: 20px; /* Plaats de knop aan de onderkant van de pagina */
-    right: 20px;   /* Plaats de knop helemaal links */
-    z-index: 2;   /* Zorg dat het boven de andere elementen staat */
+    top: 20px;
+    right: 20px;
+    z-index: 2;
 }
 

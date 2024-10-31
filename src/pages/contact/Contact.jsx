@@ -38,7 +38,7 @@ const Contact = () => {
 
     return (
         <div className="contact">
-            <h2 className>Let&apos;s Get in Touch!</h2>
+            <h2 className="contact-title">Let&apos;s Get in Touch!</h2>
             <p className="contact-text">
                 We would love to hear from you. Whether you have a question, want to report any unwanted behavior on this platform, or just want to say
                 hi, we are here for you.</p>

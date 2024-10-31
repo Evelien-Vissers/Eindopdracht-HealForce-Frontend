@@ -6,11 +6,12 @@
     padding-bottom: 50px;
 }
 
-h2 {
-    margin-top: 50px;
+.contact-title {
+    margin-top: 100px;
     font-family: 'Prata', serif;
-    font-size: 45px;
+    font-size: 70px;
     font-weight: bold;
+    margin-bottom: 20px;
 }
 
 .contact-text {

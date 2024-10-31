@@ -10,22 +10,25 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const loginData = {
-        email,
+        userName: email,
         password,
         };
 
         try {
-            const loginResponse = await axios.post('http://localhost:8080/users/login', loginData);
+            const loginResponse = await axios.post('http://localhost:8080/login', loginData, {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
 
             if (loginResponse.status === 200) {
-                const {token, role} = loginResponse.data;
+                const {token, role, Id} = loginResponse.data;
+                login(token, role, Id);
 
-                login(token, role);
         } else {
             alert('Login failed. Please check your credentials');
         }
@@ -62,7 +65,7 @@ const Login = () => {
                         onChange={e => setPassword(e.target.value)}
                         required />
 
-                    <Button text="Login" type="mint" size="large" htmlType="submit" />
+                    <Button text="Login" type="mint" size="large" onClick={handleSubmit} />
 
                     <div className="separator">or</div>
 

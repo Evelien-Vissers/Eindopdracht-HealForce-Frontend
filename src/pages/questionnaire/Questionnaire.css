@@ -58,11 +58,10 @@ label {
     margin-bottom: 20px;
 }
 
-/* Ruimte tussen checkbox en de tekst */
 .checkbox-group label {
     display: flex;
     align-items: center;
-    margin-bottom: 8px; /* Ruimte tussen elke checkbox-vraag */
+    margin-bottom: 8px;
     font-weight: normal;
 }
 
@@ -117,11 +116,6 @@ label {
     cursor: pointer;
 }
 
-.error-message {
-    color: red;
-    font-size: 12px;
-    margin-top: -10px;
-}
 
 input[type="text"],
 input[type="date"],
@@ -129,14 +123,14 @@ input[type="month"],
 select,
 textarea {
     width: 100%;
-    padding: 12px;  /* Iets grotere padding om het veld hoger te maken */
-    border: 1px solid #ccc; /* Lichte grijze rand */
-    border-radius: 10px; /* Ronde randen voor een vriendelijker uiterlijk */
-    background-color: #f9f9f9; /* Lichtgrijze achtergrond voor zachtheid */
-    font-size: 16px; /* Iets grotere tekst voor betere leesbaarheid */
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Zachte schaduw voor diepte */
-    transition: all 0.3s ease-in-out; /* Soepele overgang voor hover/focus effecten */
-    margin-bottom: 20px; /* Ruimte tussen de velden */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 20px;
 }
 
 input[type="text"]:focus,
@@ -144,16 +138,16 @@ input[type="date"]:focus,
 input[type="month"]:focus,
 select:focus,
 textarea:focus {
-    outline: none; /* Verwijder de standaard outline */
-    border: 1px solid #007BFF; /* Blauwe rand op focus voor een actiever uiterlijk */
-    box-shadow: 0px 4px 8px rgba(0, 123, 255, 0.3); /* Grotere schaduw bij focus */
+    outline: none;
+    border: 1px solid #007BFF;
+    box-shadow: 0px 4px 8px rgba(0, 123, 255, 0.3);
     margin-bottom: 10px;
 }
 
 select {
-    appearance: none; /* Verberg de standaard dropdown-pijl */
-    background-color: white; /* Zorgt ervoor dat de achtergrond wit wordt */
-    color: #333; /* Zwarte tekst voor goede leesbaarheid */
+    appearance: none;
+    background-color: white;
+    color: #333;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 10px;

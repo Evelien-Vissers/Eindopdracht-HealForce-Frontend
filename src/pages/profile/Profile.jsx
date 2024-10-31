@@ -71,8 +71,9 @@ const Profile = () => {
                     <p><strong>Treated at:</strong> {displayedProfileData.hospital}</p>
                     <p><strong>Connection Preference:</strong> {displayedProfileData.connectionPreference}</p>
                 </div>
-                    <div className="adjust-profile-container">
-                        <Button text="Adjust My Profile" size="large" type="black" link="/questionnaire"></Button>
+                    <div className="profilebuttons-container">
+                        <Button text="Adjust My Profile" size="large" type="mint" link="/questionnaire"></Button>
+                        <Button text="Delete My Profile" size="large" type="black" link="/"></Button>
                     </div>
                     {error && <div className="error-message">{error}</div>}
             </div>

@@ -1,6 +1,6 @@
-.admin-page {
+.admin-container {
     text-align: center;
-    min-height: 500vh;
+    min-height: 120vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,6 +11,7 @@
 .admin-title {
     font-size: 2.5rem;
     margin-bottom: 20px;
+    margin-top: 150px;
     text-align: center;
 }
 .button-container {
@@ -19,10 +20,14 @@
 }
 
 .admin-table {
-    width: 800px;
+    width: 90%;
+    max-width: 800px;
     margin: 0 auto;
     border-collapse: collapse;
     margin-bottom: 100px;
+    overflow: hidden;
+    transition: max-height 0.5s, opacity 0.5s ease;
+    opacity: 0;
 }
 .admin-table.visible {
     opacity: 1;
