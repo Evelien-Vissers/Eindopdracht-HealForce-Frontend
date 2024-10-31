@@ -9,7 +9,7 @@
     flex-wrap: wrap;
 }
 .logo {
-   flex: 1;
+   flex-basis: 40%;
 }
 
 .logo img {
@@ -21,7 +21,7 @@
 
 nav {
     display: flex;
-    flex: 2;
+    flex-basis: 70%;
     justify-content: center;
     margin-left: -350px;
 
@@ -63,5 +63,35 @@ nav {
 
 .nav-links a:hover {
     color: #555;
+}
+
+.header button {
+    flex-basis: 15%;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 800px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+    }
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-links li {
+        padding: 5px 0;
+    }
+
+    .logo img {
+        width: 100px;
+        height: auto;
+    }
+
+    .header button {
+        margin-top: 10px;
+    }
 }
 

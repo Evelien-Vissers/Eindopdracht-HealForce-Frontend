@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="page-container">
         <Header />
-        <Admin />
+        <Match />
         {/*<AuthProvider>
           <Routes>
 
