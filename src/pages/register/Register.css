@@ -1,6 +1,6 @@
 .register-page {
     background: linear-gradient(135deg, #40e0d0, #c4cfce);
-    height: 130vh;
+    height: 140vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -12,7 +12,7 @@
     color: white;
     padding: 40px 30px;
     border-radius: 8px;
-    max-width: 600px;
+    max-width: 500px;
     width: 100%;
     text-align: center;
     margin-top: 80px;

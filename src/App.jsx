@@ -20,10 +20,10 @@ import Admin from "./pages/admin/Admin.jsx";
 function App() {
 
   return (
+           <AuthProvider>
     <div className="page-container">
         <Header />
-        <Match />
-        {/*<AuthProvider>
+   
           <Routes>
 
           <Route path="/" element={<Home/>} />
@@ -51,10 +51,11 @@ function App() {
                   <Match/>
               </ProtectedRoute>} />
       </Routes>
-                </AuthProvider> */}
+
       <Footer />
 
     </div>
+      </AuthProvider>
   )
 }
 

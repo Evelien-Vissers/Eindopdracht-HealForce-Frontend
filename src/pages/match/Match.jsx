@@ -8,7 +8,7 @@ import MatchListContainer from "../../components/matchlistcontainer/MatchListCon
 import {useEffect, useState} from "react";
 import thumbsUp from '../../assets/thumbs-up-solid.svg'
 import thumbsDown from '../../assets/thumbs-down-solid.svg'
-import axios from "axios";
+
 
 
 const Match = ( ) => {
