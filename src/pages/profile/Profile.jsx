@@ -2,21 +2,24 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Profile.css';
 import Button from '../../components/button/Button.jsx';
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {calculateAge} from "../../helpers/calculateAgeHelper.js";
 import location from '../../assets/locationicon.png';
 import warrior from '../../assets/warrioricon.png';
 import healing from '../../assets/healingicon.png';
+import {useAuth} from "../../authentication/AuthContext.jsx";
 
 
 const Profile = () => {
     const [profileData, setProfileData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
+    const {id} = useAuth();
 
     useEffect(() => {
         // Fetch profile data from database
-        axios.get('http://localhost:8080/profiles/{id}')
+        axios.get('http://localhost:8080/profiles/${id}')
             .then(response => {
                 setProfileData(response.data);
                 setLoading(false);
@@ -26,7 +29,18 @@ const Profile = () => {
                 setError('Error fetching profile data. Please try again');
                 setLoading(false);
             });
-    }, []);
+    }, [id]);
+
+    const handleDeleteProfile = () => {
+        axios.delete(`http://localhost:8080/profiles/${id}`)
+            .then(() => {
+                navigate("/");
+            })
+            .catch(error => {
+                console.error('Error deleting profile', error);
+                setError('Error deleting profile data. Please try again');
+            });
+    };
 
     const defaultProfile = {
         healForceName: 'N/A',
@@ -42,6 +56,10 @@ const Profile = () => {
 
     const age = profileData ? calculateAge(profileData) : 'N/A';
     const displayedProfileData = profileData || defaultProfile;
+
+    if (loading) {
+        return <p>Loading profile...</p>;
+    }
 
         return (
             <div className="profile-page">
@@ -73,7 +91,7 @@ const Profile = () => {
                 </div>
                     <div className="profilebuttons-container">
                         <Button text="Adjust My Profile" size="large" type="mint" link="/questionnaire"></Button>
-                        <Button text="Delete My Profile" size="large" type="black" link="/"></Button>
+                        <Button text="Delete My Profile" size="large" type="black" onClick={handleDeleteProfile}></Button>
                     </div>
                     {error && <div className="error-message">{error}</div>}
             </div>

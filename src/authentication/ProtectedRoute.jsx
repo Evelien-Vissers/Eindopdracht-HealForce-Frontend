@@ -11,13 +11,10 @@ const ProtectedRoute = ({children, roleRequired }) => {
         const checkUserProfile = async () => {
             try {
                 const response = await fetch(`http://localhost:8080/profiles/${id}`);
-                if (response.ok) {
-                    setHasProfile(true);
-                } else if (response.status === 404) {
-                    setHasProfile(false);
-                }
+                    setHasProfile(response.ok);
             } catch (error) {
                 console.error('Error checking user profile', error);
+                setHasProfile(false);
             }
         };
         if (isAuthenticated && id) {
@@ -25,9 +22,10 @@ const ProtectedRoute = ({children, roleRequired }) => {
         }
     }, [isAuthenticated, id]);
 
-    if (isAuthenticated === null || hasProfile === null) {
+    if (hasProfile === null) {
         return null;
     }
+
     if (!isAuthenticated) {
         return <Navigate to="/login" replace />;
     }
