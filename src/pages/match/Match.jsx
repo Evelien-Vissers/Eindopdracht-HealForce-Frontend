@@ -1,15 +1,48 @@
 import './Match.css'
-import location from '../../assets/matchlocationicon.png'
-import warrior from '../../assets/matchwarrioricon.png'
-import method from '../../assets/matchhealingicon.png'
+import location from '../../assets/location_icon.png'
+import warrior from '../../assets/warrior_icon.png'
+import method from '../../assets/healing_icon.png'
 import Button from "../../components/button/Button.jsx";
 import MatchButton from "../../components/matchbutton/MatchButton.jsx";
 import MatchListContainer from "../../components/matchlistcontainer/MatchListContainer.jsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import thumbsUp from '../../assets/thumbs-up-solid.svg'
+import thumbsDown from '../../assets/thumbs-down-solid.svg'
+
 
 
 const Match = ( ) => {
     const [matches, setMatches] = useState([]);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [acceptedMatches, setAcceptedMatches] = useState([]);
+
+    const Id = localStorage.getItem('id');
+
+    useEffect(() => {
+        const fetchMatches = async () => {
+            try {
+                const response = await fetch('http://localhost:8080/profiles/${Id}/potential-matches');
+                const data = await response.json();
+                setMatches(data);
+            } catch (error) {
+                console.error("Error fetching matches:", error);
+            }
+        };
+        if (Id) {
+            fetchMatches();
+        } else {
+            console.error("Profile is not available");
+        }
+    }, [Id]);
+
+    const handleNext = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % matches.length);
+    };
+
+    const handleYes = () => {
+        setAcceptedMatches((prevMatches) => [...prevMatches, matches[currentIndex]]);
+    };
+
     const currentMatch = {
         profilePicture: 'default-pic.jpg',
         healForceName: 'N/A',
@@ -18,14 +51,7 @@ const Match = ( ) => {
         healthChallenge: 'Unknown',
         healingChoice: 'Unknown',
     };
-    const handleNext = () => {
-        console.log("Next Match");
-    };
 
-    const handleYes = () => {
-        console.log("Say Yes to Match!");
-        setMatches((prevMatches) => [...prevMatches, currentMatch]);
-    };
 
         return (
             <div className="matching-page">
@@ -46,11 +72,11 @@ const Match = ( ) => {
                         <img src={method} alt="HealingChoice icon" className="icon"/><p>Healing Choice: {currentMatch.healingChoice}</p></div>
                 </div>
                 <div className="matchbutton-container">
-                    <MatchButton text="Next" onClick={handleNext} type="next" />
-                    <MatchButton text="Yes" onClick={handleYes}/>
+                    <MatchButton text="Next" onClick={handleNext} icon={thumbsDown} type="next" />
+                    <MatchButton text="Yes" onClick={handleYes} icon={thumbsUp} type="yes" />
                 </div>
             </div>
-                <MatchListContainer matches={matches} />
+                <MatchListContainer matches={acceptedMatches} />
             </div>
 
     );

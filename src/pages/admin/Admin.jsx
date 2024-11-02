@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import axios from 'axios';
 import './Admin.css';
 import Button from '../../components/button/Button.jsx'
@@ -11,20 +11,36 @@ const Admin = () => {
         try {
             const response = await axios.get('http://localhost:8080/users/getall');
         setUsers(response.data);
-        setIsTableVisible(true);
         } catch (error) {
             console.error('Error fetching user data', error);
         }
     };
+
+    const deleteUser = async (id) => {
+        try {
+            await axios.delete(`http://localhost:8080/users/delete/${id}`);
+            setUsers(users.filter(user => user.id !== id));
+        } catch (error) {
+            console.error('Error deleting user', error);
+        }
+    }
+
+    const toggleTableVisibility = () => {
+        if (!isTableVisible && users.length === 0) {
+            fetchUsers();
+        }
+        setIsTableVisible(!isTableVisible);
+    }
 
     return (
         <div className="admin-container">
             <h2 className="admin-title">Admin Dashboard & User Management</h2>
 
            <div className="button-container">
-               <Button text="Get All Users" onClick={fetchUsers} type="black" size="large" />
+               <Button text={isTableVisible ? "Hide Users" : "Get All Users"} onClick={toggleTableVisibility} type="black" size="large" />
            </div>
-            <table className="admin-table">
+
+            <table className={`admin-table ${isTableVisible ? "visible" : "hidden"}`}>
                 <thead>
                 <tr>
                     <th>First Name</th>
@@ -43,7 +59,8 @@ const Admin = () => {
                         <td>{user.email}</td>
                         <td>{new Date(user.registrationDate).toLocaleDateString()}</td>
                     <td>
-                        <button className="delete-button">Delete User</button>
+                        <button className="delete-button"
+                        onClick={() => deleteUser(user.id)}>Delete User</button>
                     </td>
                     </tr>
                 ))}

@@ -4,13 +4,11 @@
     justify-content: center;
     padding: 20px 30px;
     font-size: 1.2rem;
-    color: rgb(1, 4, 3);
-    background-color: #4CAF50; /* Default color */
     border: none;
     border-radius: 25px;
     cursor: pointer;
     position: relative;
-    transform: translateY(50%); /* Position the button to slightly overlap the match-container */
+    transform: translateY(50%);
     transition: background-color 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -22,13 +20,14 @@
 }
 
 .match-button.next {
-    background-color: #c68e72;
+    background-color: #ea476c;
 }
 
 .match-button.yes {
-    background-color: #92e6d2;
+    background-color: #24dcaf;
 }
 
 .match-button:hover {
-    opacity: 0.9;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    background-color: #ebf3f2;
 }

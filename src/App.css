@@ -32,10 +32,24 @@ h1 {
   font-family: 'Rubik', sans-serif;
   font-size: 4rem;
 }
+
+h2 {
+  font-family: 'Prata', serif;
+  font-size: 70px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
 .page-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: -10px;
 }
 
 @media (max-width: 768px) {

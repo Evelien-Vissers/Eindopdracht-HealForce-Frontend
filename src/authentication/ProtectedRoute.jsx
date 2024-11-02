@@ -1,15 +1,26 @@
-import {useContext} from 'react';
 import {Navigate} from 'react-router-dom';
-import {AuthContext} from './AuthContext.jsx';
+import {useAuth} from './AuthContext.jsx';
+import PropTypes from "prop-types";
 
-const ProtectedRoute = ({children}) => {
-    const {isAuthenticated} = useContext(AuthContext);
+const ProtectedRoute = ({children, roleRequired }) => {
+    const {isAuthenticated, role} = useAuth();
 
     if (!isAuthenticated) {
         return <Navigate to="/login" replace />;
     }
+    if (roleRequired === "ADMIN") {
+        if (role === "ROLE_ADMIN") {
+            return children;
+        } else {
+            return <Navigate to="/questionnaire" replace />;
+        }
+    }
 
-    return children;
 };
+
+ProtectedRoute.propTypes = {
+    children: PropTypes.node.isRequired,
+    roleRequired: PropTypes.string,
+}
 
 export default ProtectedRoute;

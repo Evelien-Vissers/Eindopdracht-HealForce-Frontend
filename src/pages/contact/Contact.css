@@ -1,16 +1,17 @@
 .contact {
     text-align: center;
     position: relative;
-    height: 180vh;
+    height: 190vh;
     background: linear-gradient(100deg, #92e6d2 40%, #4bc192 100%);
     padding-bottom: 50px;
 }
 
-h2 {
-    margin-top: 50px;
+.contact-title {
+    margin-top: 100px;
     font-family: 'Prata', serif;
-    font-size: 45px;
+    font-size: 70px;
     font-weight: bold;
+    margin-bottom: 20px;
 }
 
 .contact-text {

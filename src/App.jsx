@@ -20,12 +20,11 @@ import Admin from "./pages/admin/Admin.jsx";
 function App() {
 
   return (
+    <AuthProvider>
     <div className="page-container">
         <Header />
-        <Questionnaire />
-        {/*} <AuthProvider>
-          <Routes>
 
+          <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/mission" element={<Mission/>} />
           <Route path="/contact" element={<Contact/>} />
@@ -33,24 +32,17 @@ function App() {
           <Route path="/useragreement" element={<UserAgreement/>}  />
           <Route path="/register" element={<Register/>} />
           <Route path="/login" element={<Login/>} />
-          <Route path="/admin" element={<Admin/>} />
-              <Route path="/questionnaire" element={
-               <ProtectedRoute>
-              <Questionnaire/>
-              </ProtectedRoute>} />
-          <Route path="/profile" element={
-              <ProtectedRoute>
-                  <Profile/>
-              </ProtectedRoute>} />
-          <Route path="/match" element={
-              <ProtectedRoute>
-                  <Match/>
-              </ProtectedRoute>} />
-      </Routes>
-                </AuthProvider> */}
+          <Route path="/admin" element={<ProtectedRoute roleRequired="ADMIN"><Admin/></ProtectedRoute>} />
+          <Route path="/questionnaire" element={<Questionnaire/>} />
+          <Route path="/profile" element={<ProtectedRoute><Profile/></ProtectedRoute>} />
+          <Route path="/match" element={<ProtectedRoute><Match/></ProtectedRoute>} />
+
+          </Routes>
+
       <Footer />
 
     </div>
+   </AuthProvider>
   )
 }
 

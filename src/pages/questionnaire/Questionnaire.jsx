@@ -20,12 +20,10 @@ const Questionnaire = () => {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                //GET-request om de voornaam van gebruiker op te halen
-                const response = await axios.get("http://localhost:8080/user/{id}/firstName");
+                const response = await axios.get("http://localhost:8080/users/firstname");
 
                 if (!response.status === 200) {
                     const data = response.data;
-                    //Stel voornaam in, of "User" als fallback
                 setFirstName(data.firstName || "User");
             }   else {
                 console.error('Error fetching user data:', response.status);
@@ -35,7 +33,7 @@ const Questionnaire = () => {
         }
 
         fetchUserData();
-        }, []); // Dit gaat runnen zodra het component is 'gemount'
+        }, []);
 
     const onSubmit = async (profile) => {
         try {
@@ -55,7 +53,7 @@ const Questionnaire = () => {
             }));
             formData.append("profilePic", profile.profilePicture[0]);
 
-            const response = await axios.post('http://localhost:8080/profile/new', formData, {
+            const response = await axios.post('http://localhost:8080/profiles', formData, {
                 headers: {'Content-Type': 'multipart/form-data'}
                 });
 
@@ -275,7 +273,10 @@ const Questionnaire = () => {
                     </div>
                 </div>
                 <div className="submit-container">
-                <Button text="Submit" type="black" htmlType="submit" size="large"></Button>
+                <Button text="Submit"
+                        type="black"
+                        size="large"
+                        onClick={handleSubmit(onSubmit)}></Button>
                 </div>
             </form>
 
