@@ -8,6 +8,7 @@ export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [role, setRole] = useState(null);
     const [id, setId] = useState(null);
+    const [status, setStatus] = useState('pending');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -20,6 +21,7 @@ export const AuthProvider = ({ children }) => {
             setRole(storedRole);
             setId(storedId);
         }
+        setStatus('done');
     }, []);
 
     const login = (token, userRole, id) => {
@@ -48,7 +50,7 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider value={{isAuthenticated, role, id, login, logout}}>
-            {children}
+            {status === 'pending' ? <p>Loading...</p> : children}
         </AuthContext.Provider>
     )
 }
