@@ -1,15 +1,45 @@
-import React from 'react';
+import {useState} from 'react';
 import './MatchListContainer.css';
+import Button from "../button/Button.jsx";
+import {useNavigate} from "react-router-dom";
 
-const MatchListContainer = ({ matches }) => {
+const MatchListContainer = () => {
+    const navigate = useNavigate();
+    const [matches, setMatches] = useState([
+    {
+        healForceName: 'CancerKing',
+        profileId: 1,
+        email: 'john.doe@example.com'
+    }
+    ]);
+
+    const fetchMatches = async () => {
+        try {
+            const response = await fetch('http://localhost:8080/match/my-matches');
+        if (response.ok) {
+            const data = await response.json();
+            setMatches(data);
+        } else {
+            console.error('Failed to fetch matches');
+        }
+    } catch (error) {
+            console.error('Error fetching user data:', error);
+        }
+    };
+
+    const handleViewProfile = (profileId) => {
+        navigate(`/profile/${profileId}`);
+    };
+
     return (
         <div className="match-list-container">
-            <h3>Your Matches</h3>
-            <table className="match-list-table">
+            <div className="button-wrapper">
+            <Button text= "Show My HealForce Matches" type="black" onClick={fetchMatches}>Show My HealForce Matches</Button>
+            </div>
+                <table className="match-list-table">
                 <thead>
                 <tr>
                     <th>HealForce Name</th>
-                    <th>Profile Pic</th>
                     <th>View Profile</th>
                     <th>Email Address</th>
                 </tr>
@@ -20,10 +50,9 @@ const MatchListContainer = ({ matches }) => {
                         <tr key={index}>
                             <td>{match.healForceName}</td>
                             <td>
-                                <img src={match.profilePicture || 'default-pic.jpg'} alt="Profile" className="profile-thumbnail" />
-                            </td>
-                            <td>
-                                <button className="view-profile-btn" onClick={() => console.log(`Viewing profile of ${match.healForceName}`)}>
+                                <button
+                                    className="view-profile-btn"
+                                    onClick={() => handleViewProfile(match.profileId)}>
                                     View Profile
                                 </button>
                             </td>
@@ -40,5 +69,4 @@ const MatchListContainer = ({ matches }) => {
         </div>
     );
 };
-
 export default MatchListContainer;

@@ -47,3 +47,8 @@
 .view-profile-btn:hover {
     background-color: #3b8dbd;
 }
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
