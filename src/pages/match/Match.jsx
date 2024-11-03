@@ -35,12 +35,44 @@ const Match = ( ) => {
         }
     }, [Id]);
 
-    const handleNext = () => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % matches.length);
+    const handleNext = async () => {
+        if (matches[currentIndex]) {
+            const profileId2 = matches[currentIndex].profileId;
+
+            try {
+                await fetch('http://localhost:8080/match/next', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({profileId2}),
+                });
+                setCurrentIndex((prevIndex) => (prevIndex + 1) % matches.length);
+            } catch (error) {
+                console.error("Error sending 'Next' action", error);
+            }
+        }
     };
 
-    const handleYes = () => {
-        setAcceptedMatches((prevMatches) => [...prevMatches, matches[currentIndex]]);
+    const handleYes = async () => {
+        if (matches[currentIndex]) {
+            const profileId2 = matches[currentIndex].profileId;
+
+            try {
+                await fetch('http://localhost:8080/match/yes', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({profileId2}),
+                });
+
+                setAcceptedMatches((prevMatches) => [...prevMatches, matches[currentIndex]]);
+                setCurrentIndex((prevIndex) => (prevIndex + 1) % matches.length);
+            } catch (error) {
+                console.error("Error sending 'Yes' action", error);
+            }
+        }
     };
 
     const currentMatch = {
@@ -56,7 +88,7 @@ const Match = ( ) => {
         return (
             <div className="matching-page">
                 <div className="button-container">
-                <Button text="Go Back To My Profile" type="mint" size="large" link="/profile"/>
+                <Button text="Go Back To My Profile" type="black" size="large" link="/profile"/>
                 </div>
             <div className="match-container">
                 <div className="profile-pic-container">

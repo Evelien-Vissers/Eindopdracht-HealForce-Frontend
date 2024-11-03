@@ -23,9 +23,7 @@ function App() {
     <AuthProvider>
     <div className="page-container">
         <Header />
-      <Match />
-
-      {/*} <Routes>
+         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/mission" element={<Mission/>} />
           <Route path="/contact" element={<Contact/>} />
@@ -38,7 +36,7 @@ function App() {
           <Route path="/profile" element={<ProtectedRoute><Profile/></ProtectedRoute>} />
           <Route path="/match" element={<ProtectedRoute><Match/></ProtectedRoute>} />
 
-          </Routes> */}
+          </Routes>
 
       <Footer />
 

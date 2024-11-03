@@ -35,7 +35,7 @@
 }
 
 .view-profile-btn {
-    background-color: #40a8e0;
+    background-color: #252525;
     border: none;
     padding: 5px 10px;
     color: white;
@@ -45,7 +45,7 @@
 }
 
 .view-profile-btn:hover {
-    background-color: #3b8dbd;
+    background-color: rgba(64, 61, 61, 0.8);
 }
 .button-wrapper {
     display: flex;
