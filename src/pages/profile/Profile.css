@@ -48,6 +48,24 @@
     margin-bottom: 15px;
 }
 
+.profile-pic-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.profile-pic {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.healforce-name {
+    font-size: 2.5rem;
+    margin: 20px 0;
+}
+
 .icon {
     width: 35px;
     height: 35px;
@@ -71,6 +89,19 @@
     margin: 8px;
 }
 
+.adjustbutton-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 2;
+}
+
+.deletebutton-container {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2;
+}
 
 .error-message {
     position: absolute;
@@ -84,14 +115,5 @@
     z-index: 4;
 }
 
-.profilebuttons-container {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 2;
-    margin-bottom: 20px;
-}
+
 

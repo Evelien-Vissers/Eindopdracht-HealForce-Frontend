@@ -20,12 +20,17 @@ const Admin = () => {
     };
 
     const deleteUser = async (id) => {
+        if (!token) {
+            console.error('No token found');
+            return
+        }
+
         try {
             await axios.delete(`http://localhost:8080/users/delete/${id}`, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: token
-            },
+            }
         });
 
         setUsers(users.filter(user => user.id !== id));

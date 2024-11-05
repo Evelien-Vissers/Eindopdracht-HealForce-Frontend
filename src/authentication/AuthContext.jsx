@@ -2,10 +2,10 @@ import {createContext, useState, useEffect, useContext} from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
+
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
-    const navigate = useNavigate();
     const [authState, setAuthState] = useState({
         token: localStorage.getItem("token"),
         role: localStorage.getItem("role"),
@@ -13,32 +13,31 @@ export const AuthProvider = ({ children }) => {
         isAuthenticated: !!localStorage.getItem("token"),
         status: 'pending'
     });
+    const navigate = useNavigate();
 
     useEffect(() => {
-
         setAuthState((prevState) => ({
             ...prevState,
             status: 'done'
         }));
     }, []);
 
-
-    const login = (token, userRole, id) => {
+    const login = async (token, userRole, id) => {
         localStorage.setItem("token", token);
         localStorage.setItem("role", userRole);
         localStorage.setItem("id", id);
 
-        setAuthState({
-            token,
+        setAuthState((prevState) => ({
+            ...prevState,
+            token: token,
             role: userRole,
             id: id,
             isAuthenticated: true,
-            status: 'done'
-        });
+            status: 'done',
+        }));
 
-        navigate(userRole === "ROLE_ADMIN" ? '/admin' : '/questionnaire');
-    };
-
+            navigate(userRole === "ROLE_ADMIN" ? '/admin' : '/questionnaire');
+    }
 
     const logout = () => {
         localStorage.removeItem("token");
@@ -52,8 +51,8 @@ export const AuthProvider = ({ children }) => {
             isAuthenticated: false,
             status: 'done'
         });
-        navigate('/login');
 
+        navigate('/login');
     };
 
     return (
@@ -66,7 +65,7 @@ export const AuthProvider = ({ children }) => {
 }
 AuthProvider.propTypes = {
     children: PropTypes.node.isRequired,
-};
+}
 
 export function useAuth() {
     return useContext(AuthContext);

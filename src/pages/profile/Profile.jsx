@@ -15,12 +15,22 @@ const Profile = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
-    const {id} = useAuth();
+    const {token, id} = useAuth();
 
     useEffect(() => {
         const fetchProfileData = async () => {
+            if (!token || !id) {
+                setError("Authentication error. Please login again.");
+                setLoading(false);
+                return;
+            }
             try {
-                const response = await axios.get(`http://localhost:8080/profiles/${id}`);
+                const response = await axios.get(`http://localhost:8080/profiles/${id}`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: token,
+                    }
+                });
                 setProfileData(response.data);
             } catch (error) {
                 console.error('Error fetching profile data:', error);
@@ -30,17 +40,28 @@ const Profile = () => {
             }
         };
         fetchProfileData();
-    }, [id]);
+    }, [token, id]);
 
-    const handleDeleteProfile = () => {
-        axios.delete(`http://localhost:8080/profiles/${id}`)
-            .then(() => {
-                navigate("/");
-            })
-            .catch(error => {
+    const handleDeleteProfile = async () => {
+        if (!token || !id) {
+            setError("Authentication error. Please login again.");
+            return;
+        }
+
+        try {
+            axios.delete(`http://localhost:8080/profiles/${id}`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: token,
+                },
+            });
+
+            navigate("/");
+
+            } catch(error) {
                 console.error('Error deleting profile', error);
                 setError('Error deleting profile data. Please try again');
-            });
+            }
     };
 
     const defaultProfile = {
@@ -48,7 +69,7 @@ const Profile = () => {
         city: 'Unknown',
         country: 'Unknown',
         healingChoice: 'Unknown',
-        profilePicture: 'default-pic.jpg',
+        profilePicUrl: 'default-pic.jpg',
         gender: 'Unknown',
         diagnosis: 'Unknown',
         hospital: 'Unknown',
@@ -69,11 +90,11 @@ const Profile = () => {
                 </div>
                 <div className="overlay">
                     <div className="miniProfile-container">
-                        <div className="profile-pic">
-                            <img src={displayedProfileData.profilePicture || 'default-pic.jpg'} alt="Profile"/>
+                        <div className="profile-pic-container">
+                            <img className="profile-pic" src={displayedProfileData.profilePicUrl || 'default-pic.jpg'} alt="Profile"/>
                         </div>
                 <div className="miniProfile-data">
-                        <h3>{displayedProfileData.healForceName}</h3>
+                        <h3 className="healforce-name">{displayedProfileData.healforceName}</h3>
                         <p><img src={location} alt="Location icon" className="icon"/>
                             {displayedProfileData.city}, {displayedProfileData.country}</p>
                         <p><img src={warrior} alt="Warrior icon" className="icon"/>
@@ -90,8 +111,10 @@ const Profile = () => {
                     <p><strong>Treated at:</strong> {displayedProfileData.hospital}</p>
                     <p><strong>Connection Preference:</strong> {displayedProfileData.connectionPreference}</p>
                 </div>
-                    <div className="profilebuttons-container">
+                    <div className="adjustbutton-container">
                         <Button text="Adjust My Profile" size="large" type="mint" link="/questionnaire"></Button>
+                    </div>
+                    <div className="deletebutton-container">
                         <Button text="Delete My Profile" size="large" type="black" onClick={handleDeleteProfile}></Button>
                     </div>
                     {error && <div className="error-message">{error}</div>}

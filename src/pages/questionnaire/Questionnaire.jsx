@@ -15,10 +15,10 @@ import {AuthContext} from "../../authentication/AuthContext.jsx";
 const Questionnaire = () => {
     const { register, handleSubmit, control, formState: { errors }} = useForm();
     const navigate = useNavigate();
-    const {token} = useContext(AuthContext);
+    const {token, id} = useContext(AuthContext);
     const [firstName, setFirstName] = useState ('');
+    const [errorMessage, setErrorMessage] = useState('');
 
-    //Fetch user's first name from database
     useEffect(() => {
         const fetchUserData = async () => {
             if (!token) {
@@ -45,6 +45,31 @@ const Questionnaire = () => {
 
         fetchUserData();
         }, [token]);
+
+    const handleProfileNavigation = async () => {
+        if (!token) {
+            console.error('No token found');
+            return;
+        }
+
+        try {
+            const response = await axios.get(`http://localhost:8080/users/${id}`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: token,
+                }
+            });
+        if (response.data.profileId) {
+            navigate('/profile');
+        } else {
+            setErrorMessage("You don't have a profile yet. Please fill in this questionnaire first.");
+        }
+    } catch (error) {
+        console.error("Error checking profile existence:", error);
+        setErrorMessage("An error occurred. Please try again.");
+        }
+    };
+
 
     const onSubmit = async (profile) => {
         try {
@@ -83,6 +108,16 @@ const Questionnaire = () => {
 
     return (
         <div className="questionnaire-page">
+
+            <div className="handlenavigation-button">
+                <Button onClick={handleProfileNavigation}
+                        className="handlenavigation-button"
+                        text="Go Directly to My Profile"
+                        type="black"
+                        size="large">
+                </Button>
+                {errorMessage && <p className="error-message">{errorMessage}</p>}
+            </div>
 
             <form onSubmit={handleSubmit(onSubmit)} className="questionnaire-form">
                 <div className="questionnaire-section">
