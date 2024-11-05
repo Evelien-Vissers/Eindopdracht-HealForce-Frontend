@@ -15,19 +15,19 @@ const Login = () => {
 
         const loginData = {
         userName: email,
-        password,
+        password: password,
         };
 
         try {
             const loginResponse = await axios.post('http://localhost:8080/login', loginData, {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
             });
 
             if (loginResponse.status === 200) {
-                const {token, role, Id} = loginResponse.data;
-                login(token, role, Id);
+                const {token, role, id} = loginResponse.data;
+                login(token, role, id);
 
         } else {
             alert('Login failed. Please check your credentials');
@@ -71,7 +71,6 @@ const Login = () => {
 
                     <div className="register-prompt">
                         <p className="register-text">Don&apos;t have an account yet?</p>
-                        {/*<Link to={register} className={'btn ${mint} ${size}'}></Link>*/}
                         <Button text="Register" type="mint" size="medium" link="/register"/>
                     </div>
                 </form>

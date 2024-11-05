@@ -1,11 +1,14 @@
-import {useEffect, useState} from 'react';
+import { useState} from 'react';
 import axios from 'axios';
 import './Admin.css';
 import Button from '../../components/button/Button.jsx'
+import {useAuth} from "../../authentication/AuthContext.jsx";
+
 
 const Admin = () => {
     const [users, setUsers] = useState([]);
     const [isTableVisible, setIsTableVisible] = useState(false);
+    const {token} = useAuth();
 
     const fetchUsers = async () => {
         try {
@@ -18,12 +21,19 @@ const Admin = () => {
 
     const deleteUser = async (id) => {
         try {
-            await axios.delete(`http://localhost:8080/users/delete/${id}`);
-            setUsers(users.filter(user => user.id !== id));
+            await axios.delete(`http://localhost:8080/users/delete/${id}`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: token
+            },
+        });
+
+        setUsers(users.filter(user => user.id !== id));
+        console.log('User succesfully deleted');
         } catch (error) {
             console.error('Error deleting user', error);
         }
-    }
+    };
 
     const toggleTableVisibility = () => {
         if (!isTableVisible && users.length === 0) {

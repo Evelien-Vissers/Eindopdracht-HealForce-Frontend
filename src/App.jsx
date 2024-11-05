@@ -31,8 +31,8 @@ function App() {
           <Route path="/useragreement" element={<UserAgreement/>}  />
           <Route path="/register" element={<Register/>} />
           <Route path="/login" element={<Login/>} />
-          <Route path="/admin" element={<ProtectedRoute roleRequired="ADMIN"><Admin/></ProtectedRoute>} />
-          <Route path="/questionnaire" element={<Questionnaire/>} />
+          <Route path="/admin" element={<ProtectedRoute roleRequired="ROLE_ADMIN"><Admin /></ProtectedRoute>} />
+             <Route path="/questionnaire" element={<ProtectedRoute><Questionnaire/></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><Profile/></ProtectedRoute>} />
           <Route path="/match" element={<ProtectedRoute><Match/></ProtectedRoute>} />
 

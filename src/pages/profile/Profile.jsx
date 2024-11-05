@@ -18,17 +18,18 @@ const Profile = () => {
     const {id} = useAuth();
 
     useEffect(() => {
-        // Fetch profile data from database
-        axios.get('http://localhost:8080/profiles/${id}')
-            .then(response => {
+        const fetchProfileData = async () => {
+            try {
+                const response = await axios.get(`http://localhost:8080/profiles/${id}`);
                 setProfileData(response.data);
-                setLoading(false);
-            })
-            .catch(error => {
+            } catch (error) {
                 console.error('Error fetching profile data:', error);
                 setError('Error fetching profile data. Please try again');
+            } finally {
                 setLoading(false);
-            });
+            }
+        };
+        fetchProfileData();
     }, [id]);
 
     const handleDeleteProfile = () => {

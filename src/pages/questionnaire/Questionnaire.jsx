@@ -8,32 +8,43 @@ import choice from "../../assets/choice.png"
 import countries from "../../constants/countryList.json";
 import diseases from "../../constants/chronicDiseaseList.json"
 import Button from "../../components/button/Button.jsx";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import axios from "axios";
+import {AuthContext} from "../../authentication/AuthContext.jsx";
 
 const Questionnaire = () => {
     const { register, handleSubmit, control, formState: { errors }} = useForm();
-    const navigate = useNavigate(); // Hook voor navigatie naar Profile.jsx
-    const [firstName, setFirstName] = useState ('')
+    const navigate = useNavigate();
+    const {token} = useContext(AuthContext);
+    const [firstName, setFirstName] = useState ('');
 
     //Fetch user's first name from database
     useEffect(() => {
         const fetchUserData = async () => {
-            try {
-                const response = await axios.get("http://localhost:8080/users/firstname");
-
-                if (!response.status === 200) {
-                    const data = response.data;
-                setFirstName(data.firstName || "User");
-            }   else {
-                console.error('Error fetching user data:', response.status);
+            if (!token) {
+                console.error('No token found');
+                return;
             }
-        } catch (error) {
-            console.error('Error fetching user data:', error);}
-        }
+            try {
+                const response = await axios.get("http://localhost:8080/users/firstname", {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: token,
+                    }
+                });
+
+                if (response.status === 200) {
+                    setFirstName(response.data.firstName || "User");
+                } else {
+                    console.error('Error fetching user data:', response.status);
+                }
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+    };
 
         fetchUserData();
-        }, []);
+        }, [token]);
 
     const onSubmit = async (profile) => {
         try {
@@ -54,7 +65,10 @@ const Questionnaire = () => {
             formData.append("profilePic", profile.profilePicture[0]);
 
             const response = await axios.post('http://localhost:8080/profiles', formData, {
-                headers: {'Content-Type': 'multipart/form-data'}
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    Authorization: token,
+                },
                 });
 
             if (response.status === 200) {
