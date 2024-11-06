@@ -8,8 +8,9 @@
     border-bottom: 30px solid black;
     flex-wrap: wrap;
 }
+
 .logo {
-   flex-basis: 40%;
+   flex-basis: 35%;
 }
 
 .logo img {
@@ -21,7 +22,7 @@
 
 nav {
     display: flex;
-    flex-basis: 70%;
+    flex-basis: 60%;
     justify-content: center;
     margin-left: -350px;
 

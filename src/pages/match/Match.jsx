@@ -8,32 +8,37 @@ import MatchListContainer from "../../components/matchlistcontainer/MatchListCon
 import {useEffect, useState} from "react";
 import thumbsUp from '../../assets/thumbs-up-solid.svg'
 import thumbsDown from '../../assets/thumbs-down-solid.svg'
-
-
+import {useAuth} from "../../authentication/AuthContext.jsx";
 
 const Match = ( ) => {
     const [matches, setMatches] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [acceptedMatches, setAcceptedMatches] = useState([]);
+    const {token, id} = useAuth();
 
-    const Id = localStorage.getItem('id');
 
     useEffect(() => {
         const fetchMatches = async () => {
+            if (!token || !id) {
+                console.error('No token found');
+                return;
+            }
             try {
-                const response = await fetch('http://localhost:8080/profiles/${Id}/potential-matches');
+                const response = await fetch('http://localhost:8080/profiles/${Id}/potential-matches', {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: token
+                    }
+                });
                 const data = await response.json();
                 setMatches(data);
             } catch (error) {
                 console.error("Error fetching matches:", error);
             }
         };
-        if (Id) {
-            fetchMatches();
-        } else {
-            console.error("Profile is not available");
-        }
-    }, [Id]);
+
+        fetchMatches();
+        }, [token, id]);
 
     const handleNext = async () => {
         if (matches[currentIndex]) {
@@ -44,6 +49,7 @@ const Match = ( ) => {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        Authorization: token
                     },
                     body: JSON.stringify({profileId2}),
                 });
@@ -61,8 +67,8 @@ const Match = ( ) => {
             try {
                 await fetch('http://localhost:8080/match/yes', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
+                    headers: {'Content-Type': 'application/json',
+                        Authorization: token
                     },
                     body: JSON.stringify({profileId2}),
                 });
@@ -75,7 +81,7 @@ const Match = ( ) => {
         }
     };
 
-    const currentMatch = {
+    const currentMatch = matches.length > 0 ? matches[currentIndex] : {
         profilePicture: 'default-pic.jpg',
         healForceName: 'N/A',
         city: 'Unknown',
@@ -92,7 +98,7 @@ const Match = ( ) => {
                 </div>
             <div className="match-container">
                 <div className="profile-pic-container">
-                    <img src={currentMatch.profilePicture} alt="Profile" className="profile-pic"/>
+                    <img src={currentMatch.profilePicUrl} alt="Profile" className="profile-pic"/>
                 </div>
                 <div className="match-details">
                     <h3 className="healforce-name">{currentMatch.healForceName}</h3>

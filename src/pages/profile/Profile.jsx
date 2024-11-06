@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Profile.css';
 import Button from '../../components/button/Button.jsx';
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {calculateAge} from "../../helpers/calculateAgeHelper.js";
 import location from '../../assets/locationicon.png';
 import warrior from '../../assets/warrioricon.png';
@@ -76,8 +76,11 @@ const Profile = () => {
         connectionPreference: 'Unknown',
     };
 
-    const age = profileData ? calculateAge(profileData) : 'N/A';
+    const age = profileData && profileData.dateOfBirth ? calculateAge(profileData.dateOfBirth) : 'N/A';
     const displayedProfileData = profileData || defaultProfile;
+    const profilePicUrl = displayedProfileData.profilePicUrl.startsWith('/uploads')
+        ?`http://localhost:8080/${displayedProfileData.profilePicUrl}`
+        : 'default-pic.jpg';
 
     if (loading) {
         return <p>Loading profile...</p>;
@@ -85,44 +88,49 @@ const Profile = () => {
 
         return (
             <div className="profile-page">
-                <div className="start-matching-container">
-                    <Button text="Start Matching" size="large" type="mint" link="/match"/>
+
+                <div className="adjustbutton-container">
+                    <Button text="Adjust My Profile" size="large" type="mint" link="/questionnaire"></Button>
+                    <Button text="Start Matching" size="large" type="mint" link="/match"></Button>
                 </div>
+
                 <div className="overlay">
                     <div className="miniProfile-container">
                         <div className="profile-pic-container">
-                            <img className="profile-pic" src={displayedProfileData.profilePicUrl || 'default-pic.jpg'} alt="Profile"/>
+                            <img className="profile-pic" src={profilePicUrl} alt="Profile"/>
                         </div>
-                <div className="miniProfile-data">
-                        <h3 className="healforce-name">{displayedProfileData.healforceName}</h3>
-                        <p><img src={location} alt="Location icon" className="icon"/>
-                            {displayedProfileData.city}, {displayedProfileData.country}</p>
-                        <p><img src={warrior} alt="Warrior icon" className="icon"/>
-                            {displayedProfileData.healthChallenge} Warrior</p>
-                        <p><img src={healing} alt="Healing icon" className="icon"/>
-                            Healing Choice: {displayedProfileData.healingChoice}</p>
-                </div>
+                        <div className="miniProfile-data">
+                            <h3 className="healforce-name">{displayedProfileData.healforceName}</h3>
+                            <p><img src={location} alt="Location icon" className="icon"/>
+                                {displayedProfileData.city}, {displayedProfileData.country}</p>
+                            <p><img src={warrior} alt="Warrior icon" className="icon"/>
+                                {displayedProfileData.healthChallenge} Warrior</p>
+                            <p><img src={healing} alt="Healing icon" className="icon"/>
+                                Healing Choice: {displayedProfileData.healingChoice}</p>
+                        </div>
                     </div>
 
-                <div className="detail-container">
-                    <p><strong>Age:</strong> {age}</p>
-                    <p><strong>Gender:</strong> {displayedProfileData.gender}</p>
-                    <p><strong>Diagnosis Date:</strong> {displayedProfileData.diagnosisDate !== 'N/A' ? new Date(displayedProfileData.diagnosisDate).toLocaleDateString() : 'N/A'}</p>
-                    <p><strong>Treated at:</strong> {displayedProfileData.hospital}</p>
-                    <p><strong>Connection Preference:</strong> {displayedProfileData.connectionPreference}</p>
-                </div>
-                    <div className="adjustbutton-container">
-                        <Button text="Adjust My Profile" size="large" type="mint" link="/questionnaire"></Button>
+                    <div className="detail-container">
+                        <p><strong>Age:</strong> {age}</p>
+                        <p><strong>Gender:</strong> {displayedProfileData.gender}</p>
+                        <p><strong>Diagnosis
+                            Date:</strong> {displayedProfileData.diagnosisDate !== 'N/A' ? new Date(displayedProfileData.diagnosisDate).toLocaleDateString() : 'N/A'}
+                        </p>
+                        <p><strong>Treated at:</strong> {displayedProfileData.hospital}</p>
+                        <p><strong>Connection Preference:</strong> {displayedProfileData.connectionPreference}</p>
                     </div>
+
+
                     <div className="deletebutton-container">
-                        <Button text="Delete My Profile" size="large" type="black" onClick={handleDeleteProfile}></Button>
+                        <Button text="Delete My Profile" size="small" type="black"
+                                onClick={handleDeleteProfile}></Button>
                     </div>
                     {error && <div className="error-message">{error}</div>}
-            </div>
+                </div>
 
             </div>
         );
-    };
+};
 
 
 export default Profile;

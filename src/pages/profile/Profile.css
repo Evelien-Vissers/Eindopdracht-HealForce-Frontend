@@ -20,12 +20,6 @@
     color: white;
 }
 
-.start-matching-container {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 2;
-}
 .miniProfile-container {
     position: absolute;
     top: 40%;
@@ -58,7 +52,7 @@
     border-radius: 50%;
     width: 150px;
     height: 150px;
-    object-fit: cover;
+
 }
 
 .healforce-name {
@@ -73,7 +67,6 @@
     vertical-align: middle;
 }
 
-
 .detail-container {
     padding: 70px;
     bottom: 50px;
@@ -85,6 +78,7 @@
     text-align: center;
     margin-bottom: 70px;
 }
+
 .detail-container p {
     margin: 8px;
 }
@@ -92,7 +86,10 @@
 .adjustbutton-container {
     position: absolute;
     top: 20px;
-    right: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
     z-index: 2;
 }
 
