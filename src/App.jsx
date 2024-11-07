@@ -15,6 +15,7 @@ import Match from "./pages/match/Match.jsx";
 import ProtectedRoute from "./authentication/ProtectedRoute.jsx";
 import { AuthProvider} from "./authentication/AuthContext.jsx";
 import Admin from "./pages/admin/Admin.jsx";
+import OtherProfile from "./pages/otherprofile/OtherProfile.jsx";
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
              <Route path="/questionnaire" element={<ProtectedRoute><Questionnaire/></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><Profile/></ProtectedRoute>} />
           <Route path="/match" element={<ProtectedRoute><Match/></ProtectedRoute>} />
+             <Route path="other-profile/:profileId" element={<OtherProfile />} />
 
           </Routes>
 

@@ -1,4 +1,4 @@
-.profile-page {
+.other-profile-page {
     position: relative;
     height: 120vh;
     background-image: url('../../assets/profile.png');
@@ -48,10 +48,11 @@
     align-items: center;
     margin-bottom: 10px;
 }
-.profile-pic-profile {
+
+.profile-pic-otherProfile {
     border-radius: 50%;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
 }
 
 .healforce-name {
@@ -82,20 +83,10 @@
     margin: 8px;
 }
 
-.adjustbutton-container {
+.back-button-container {
     position: absolute;
     top: 20px;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-    z-index: 2;
-}
-
-.deletebutton-container {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
+    left: 20px;
     z-index: 2;
 }
 
@@ -110,6 +101,3 @@
     max-width: 200px;
     z-index: 4;
 }
-
-
-

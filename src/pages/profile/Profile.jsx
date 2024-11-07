@@ -97,7 +97,7 @@ const Profile = () => {
                 <div className="overlay">
                     <div className="miniProfile-container">
                         <div className="profile-pic-container">
-                            <img className="profile-pic" src={profilePicUrl} alt="Profile"/>
+                            <img className="profile-pic-profile" src={displayedProfileData.profilePicUrl} alt="Profile"/>
                         </div>
                         <div className="miniProfile-data">
                             <h3 className="healforce-name">{displayedProfileData.healforceName}</h3>

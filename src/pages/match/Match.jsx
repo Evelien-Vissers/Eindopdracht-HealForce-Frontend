@@ -45,7 +45,7 @@ const Match = ( ) => {
             const profileId2 = matches[currentIndex].profileId;
 
             try {
-                await fetch('http://localhost:8080/match/next', {
+                await fetch('http://localhost:8080/match/next-press', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ const Match = ( ) => {
             const profileId2 = matches[currentIndex].profileId;
 
             try {
-                await fetch('http://localhost:8080/match/yes', {
+                await fetch('http://localhost:8080/match/yes-press', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json',
                         Authorization: token
@@ -98,10 +98,10 @@ const Match = ( ) => {
                 </div>
             <div className="match-container">
                 <div className="profile-pic-container">
-                    <img src={currentMatch.profilePicUrl} alt="Profile" className="profile-pic"/>
+                    <img src={currentMatch.profilePicUrl} alt="Profile" className="profile-pic-match"/>
                 </div>
                 <div className="match-details">
-                    <h3 className="healforce-name">{currentMatch.healForceName}</h3>
+                    <h3 className="healforce-name">{currentMatch.healforceName}</h3>
                     <div className="detail-item">
                         <img src={location} alt="Location icon" className="icon"/><p>{currentMatch.city}, {currentMatch.country}</p></div>
                     <div className="detail-item">

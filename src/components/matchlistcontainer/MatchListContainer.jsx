@@ -8,6 +8,7 @@ const MatchListContainer = () => {
     const { token } = useAuth();
     const navigate = useNavigate();
     const [matches, setMatches] = useState([]);
+    const [showMatches, setShowMatches] = useState(true)
 
     const fetchMatches = async () => {
         if (!token) {
@@ -25,6 +26,7 @@ const MatchListContainer = () => {
             if (response.ok) {
                 const data = await response.json();
                 setMatches(data);
+                setShowMatches(true);
         } else {
             console.error('Failed to fetch matches');
         }
@@ -34,14 +36,15 @@ const MatchListContainer = () => {
     };
 
     const handleViewProfile = (profileId) => {
-        navigate(`/profile/${profileId}`);
+        navigate(`/other-profile/${profileId}`);
     };
 
     return (
         <div className="match-list-container">
             <div className="button-wrapper">
-            <Button text= "Show My HealForce Matches" type="black" onClick={fetchMatches}>Show My HealForce Matches</Button>
+            <Button text= "Show My HealForce Matches" type="mint" onClick={fetchMatches}>Show My HealForce Matches</Button>
             </div>
+            {showMatches && (
                 <table className="match-list-table">
                 <thead>
                 <tr>
@@ -72,6 +75,7 @@ const MatchListContainer = () => {
                 )}
                 </tbody>
             </table>
+                )}
         </div>
     );
 };
