@@ -8,6 +8,7 @@ import location from '../../assets/locationicon.png';
 import warrior from '../../assets/warrioricon.png';
 import healing from '../../assets/healingicon.png';
 import {useAuth} from "../../authentication/AuthContext.jsx";
+import Logout from "../../components/logoutbutton/Logout.jsx";
 
 
 const Profile = () => {

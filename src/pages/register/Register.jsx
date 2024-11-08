@@ -1,6 +1,6 @@
 import './Register.css';
 import { useState } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import Button from "../../components/button/Button.jsx";
 import axios from "axios";
 
@@ -10,6 +10,8 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [acceptedPrivacyStatementUserAgreement, setAcceptedPrivacyStatementUserAgreement] = useState('');
+
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -27,6 +29,7 @@ const Register = () => {
 
             if (response.status === 201) {
                 alert('Registration successful!')
+                navigate('/login');
             } else {
                 alert('Failed to register. Please try again later');
             }

@@ -11,6 +11,7 @@ import Button from "../../components/button/Button.jsx";
 import {useContext, useEffect, useState} from "react";
 import axios from "axios";
 import {AuthContext} from "../../authentication/AuthContext.jsx";
+import LogoutButton from "../../components/logoutbutton/Logout.jsx";
 
 const Questionnaire = () => {
     const { register, handleSubmit, control, formState: { errors }} = useForm();
@@ -116,7 +117,9 @@ const Questionnaire = () => {
                         type="black"
                         size="large">
                 </Button>
+                <LogoutButton />
                 {errorMessage && <p className="error-message">{errorMessage}</p>}
+
             </div>
 
             <form onSubmit={handleSubmit(onSubmit)} className="questionnaire-form">

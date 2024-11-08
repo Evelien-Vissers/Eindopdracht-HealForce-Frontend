@@ -9,6 +9,7 @@ import {useEffect, useState} from "react";
 import thumbsUp from '../../assets/thumbs-up-solid.svg'
 import thumbsDown from '../../assets/thumbs-down-solid.svg'
 import {useAuth} from "../../authentication/AuthContext.jsx";
+import Logout from "../../components/logoutbutton/Logout.jsx";
 
 const Match = ( ) => {
     const [matches, setMatches] = useState([]);

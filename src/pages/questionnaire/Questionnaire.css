@@ -15,6 +15,14 @@
     border-radius: 10px;
 }
 
+.handlenavigation-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+}
+
 .questionnaire-section {
     display: flex;
     justify-content: space-between;
@@ -170,8 +178,8 @@ select:focus {
 }
 
 textarea {
-    resize: vertical; /* Maak het mogelijk om alleen verticaal de textarea aan te passen */
-    height: 150px; /* Grotere hoogte voor meer ruimte in de textarea */
+    resize: vertical;
+    height: 150px;
 }
 
 .upload-section {
@@ -188,7 +196,7 @@ textarea {
 }
 
 .upload-box {
-    border: 10px black; /* Zwarte rand zoals gevraagd */
+    border: 10px black;
     padding: 20px;
     display: flex;
     justify-content: center;
