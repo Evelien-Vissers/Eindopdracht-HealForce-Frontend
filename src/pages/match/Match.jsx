@@ -1,7 +1,7 @@
 import './Match.css'
 import location from '../../assets/location_icon.png'
 import warrior from '../../assets/warrior_icon.png'
-import method from '../../assets/healing_icon.png'
+import healingmethod from '../../assets/healing_icon.jpg'
 import Button from "../../components/button/Button.jsx";
 import MatchButton from "../../components/matchbutton/MatchButton.jsx";
 import MatchListContainer from "../../components/matchlistcontainer/MatchListContainer.jsx";
@@ -9,18 +9,18 @@ import {useEffect, useState} from "react";
 import thumbsUp from '../../assets/thumbs-up-solid.svg'
 import thumbsDown from '../../assets/thumbs-down-solid.svg'
 import {useAuth} from "../../authentication/AuthContext.jsx";
-import Logout from "../../components/logoutbutton/Logout.jsx";
+
 
 const Match = ( ) => {
     const [matches, setMatches] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [acceptedMatches, setAcceptedMatches] = useState([]);
-    const {token, id} = useAuth();
+    const {token, id: userId} = useAuth();
 
 
     useEffect(() => {
         const fetchMatches = async () => {
-            if (!token || !id) {
+            if (!token || !userId) {
                 console.error('No token found');
                 return;
             }
@@ -39,39 +39,41 @@ const Match = ( ) => {
         };
 
         fetchMatches();
-        }, [token, id]);
+        }, [token, userId]);
 
     const handleNext = async () => {
-        if (matches[currentIndex]) {
-            const profileId2 = matches[currentIndex].profileId;
+        if (matches.length > 0 && matches[currentIndex] && matches[currentIndex].id) {
+            const profileId = matches[currentIndex].id;
+            console.log("Next action for profileId:", profileId)
 
             try {
-                await fetch('http://localhost:8080/match/next-press', {
+                await fetch(`http://localhost:8080/match/next-press/${profileId}`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: token
                     },
-                    body: JSON.stringify({profileId2}),
                 });
                 setCurrentIndex((prevIndex) => (prevIndex + 1) % matches.length);
             } catch (error) {
                 console.error("Error sending 'Next' action", error);
             }
+        } else {
+    console.error("No match or profileId found for the current index.");
         }
     };
 
     const handleYes = async () => {
-        if (matches[currentIndex]) {
-            const profileId2 = matches[currentIndex].profileId;
+        if (matches.length > 0 && matches[currentIndex] && matches[currentIndex].id) {
+            const profileId = matches[currentIndex].id;
 
             try {
-                await fetch('http://localhost:8080/match/yes-press', {
+                await fetch(`http://localhost:8080/match/yes-press/${profileId}`, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json',
                         Authorization: token
                     },
-                    body: JSON.stringify({profileId2}),
+                    body: JSON.stringify({profileId}),
                 });
 
                 setAcceptedMatches((prevMatches) => [...prevMatches, matches[currentIndex]]);
@@ -108,7 +110,7 @@ const Match = ( ) => {
                     <div className="detail-item">
                         <img src={warrior} alt="HealthChallenge icon" className="icon"/><p>{currentMatch.healthChallenge} Warrior</p></div>
                     <div className="detail-item">
-                        <img src={method} alt="HealingChoice icon" className="icon"/><p>Healing Choice: {currentMatch.healingChoice}</p></div>
+                        <img src={healingmethod} alt="HealingChoice icon" className="icon"/><p>Healing Choice: {currentMatch.healingChoice}</p></div>
                 </div>
                 <div className="matchbutton-container">
                     <MatchButton text="Next" onClick={handleNext} icon={thumbsDown} type="next" />
