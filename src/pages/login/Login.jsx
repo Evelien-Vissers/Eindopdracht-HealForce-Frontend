@@ -7,27 +7,27 @@ import {AuthContext} from "../../authentication/AuthContext.jsx";
 
 const Login = () => {
     const { login } = useContext(AuthContext);
-    const [email, setEmail] = useState('');
+    const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const loginData = {
-        userName: email,
-        password,
+        userName: userName,
+        password: password,
         };
 
         try {
             const loginResponse = await axios.post('http://localhost:8080/login', loginData, {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
             });
 
             if (loginResponse.status === 200) {
-                const {token, role, Id} = loginResponse.data;
-                login(token, role, Id);
+                const {token, role, id} = loginResponse.data;
+                login(token, role, id);
 
         } else {
             alert('Login failed. Please check your credentials');
@@ -50,8 +50,8 @@ const Login = () => {
                         id="email"
                         className="form-input"
                         placeholder="Your Email"
-                        value={email}
-                        onChange={e => setEmail(e.target.value)}
+                        value={userName}
+                        onChange={e => setUserName(e.target.value)}
                         required
                     />
 
@@ -71,7 +71,6 @@ const Login = () => {
 
                     <div className="register-prompt">
                         <p className="register-text">Don&apos;t have an account yet?</p>
-                        {/*<Link to={register} className={'btn ${mint} ${size}'}></Link>*/}
                         <Button text="Register" type="mint" size="medium" link="/register"/>
                     </div>
                 </form>

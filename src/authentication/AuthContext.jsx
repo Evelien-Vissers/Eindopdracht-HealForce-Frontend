@@ -2,61 +2,70 @@ import {createContext, useState, useEffect, useContext} from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
-export const AuthContext = createContext();
+
+export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [role, setRole] = useState(null);
-    const [id, setId] = useState(null);
-    const [status, setStatus] = useState('pending');
+    const [authState, setAuthState] = useState({
+        token: localStorage.getItem("token"),
+        role: localStorage.getItem("role"),
+        id: localStorage.getItem("id"),
+        isAuthenticated: !!localStorage.getItem("token"),
+        status: 'pending'
+    });
     const navigate = useNavigate();
 
     useEffect(() => {
-        const token = localStorage.getItem("token");
-        const storedRole = localStorage.getItem("role");
-        const storedId = localStorage.getItem("id");
-
-        if (token) {
-            setIsAuthenticated(true);
-            setRole(storedRole);
-            setId(storedId);
-        }
-        setStatus('done');
+        setAuthState((prevState) => ({
+            ...prevState,
+            status: 'done'
+        }));
     }, []);
 
-    const login = (token, userRole, id) => {
+    const login = async (token, userRole, id) => {
         localStorage.setItem("token", token);
         localStorage.setItem("role", userRole);
         localStorage.setItem("id", id);
-        setIsAuthenticated(true);
-        setRole(userRole);
-        setId(id);
 
-        if (userRole === "ADMIN") {
-            navigate('/admin');
-        } else {
-        navigate('/questionnaire');
-    }};
+        setAuthState((prevState) => ({
+            ...prevState,
+            token: token,
+            role: userRole,
+            id: id,
+            isAuthenticated: true,
+            status: 'done',
+        }));
+
+            navigate(userRole === "ROLE_ADMIN" ? '/admin' : '/questionnaire');
+    }
 
     const logout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("role");
         localStorage.removeItem("id");
-        setIsAuthenticated(false);
-        setRole(null);
-        setId(null);
+
+        setAuthState({
+            token: null,
+            role: null,
+            id: null,
+            isAuthenticated: false,
+            status: 'done'
+        });
+
         navigate('/login');
     };
 
     return (
-        <AuthContext.Provider value={{isAuthenticated, role, id, login, logout}}>
-            {status === 'pending' ? <p>Loading...</p> : children}
+        <AuthContext.Provider value={{...authState, login, logout}}>
+            {authState.status === 'pending'
+                ? <p>Loading...</p>
+                : children}
         </AuthContext.Provider>
     )
 }
 AuthProvider.propTypes = {
     children: PropTypes.node.isRequired,
-};
+}
 
 export function useAuth() {
     return useContext(AuthContext);

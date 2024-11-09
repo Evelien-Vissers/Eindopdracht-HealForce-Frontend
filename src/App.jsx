@@ -15,6 +15,7 @@ import Match from "./pages/match/Match.jsx";
 import ProtectedRoute from "./authentication/ProtectedRoute.jsx";
 import { AuthProvider} from "./authentication/AuthContext.jsx";
 import Admin from "./pages/admin/Admin.jsx";
+import OtherProfile from "./pages/otherprofile/OtherProfile.jsx";
 
 
 function App() {
@@ -23,8 +24,7 @@ function App() {
     <AuthProvider>
     <div className="page-container">
         <Header />
-
-          <Routes>
+         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/mission" element={<Mission/>} />
           <Route path="/contact" element={<Contact/>} />
@@ -32,10 +32,11 @@ function App() {
           <Route path="/useragreement" element={<UserAgreement/>}  />
           <Route path="/register" element={<Register/>} />
           <Route path="/login" element={<Login/>} />
-          <Route path="/admin" element={<ProtectedRoute roleRequired="ADMIN"><Admin/></ProtectedRoute>} />
-          <Route path="/questionnaire" element={<Questionnaire/>} />
+          <Route path="/admin" element={<ProtectedRoute roleRequired="ROLE_ADMIN"><Admin /></ProtectedRoute>} />
+             <Route path="/questionnaire" element={<ProtectedRoute><Questionnaire/></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><Profile/></ProtectedRoute>} />
           <Route path="/match" element={<ProtectedRoute><Match/></ProtectedRoute>} />
+             <Route path="other-profile/:profileId" element={<OtherProfile />} />
 
           </Routes>
 

@@ -8,13 +8,10 @@ const ProtectedRoute = ({children, roleRequired }) => {
     if (!isAuthenticated) {
         return <Navigate to="/login" replace />;
     }
-    if (roleRequired === "ADMIN") {
-        if (role === "ROLE_ADMIN") {
-            return children;
-        } else {
-            return <Navigate to="/questionnaire" replace />;
+    if (roleRequired && role !== roleRequired) {
+            return <Navigate to="/profile" replace />;
         }
-    }
+    return children;
 
 };
 

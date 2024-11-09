@@ -15,8 +15,12 @@
     text-align: center;
 }
 .button-container {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: space-between;
     margin: 20px;
-    text-align: center;
+    align-items: center;
 }
 
 .admin-table {
@@ -63,4 +67,12 @@
 
 .delete-button:hover {
     background-color: #c0392b;
+}
+
+.status-message {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #254945;
 }

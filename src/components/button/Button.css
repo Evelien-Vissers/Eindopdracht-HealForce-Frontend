@@ -1,4 +1,3 @@
-/*Basisstijlen voor alle buttons */
 .btn {
     display: inline-block;
     text-align: center;
@@ -15,9 +14,7 @@
     color: #ebf3f2;
 }
 
-/* Groottes */
 
-/* Mintgroene knoppen (Login, Submit, Register, Upload) */
 .btn.mint {
     background: linear-gradient(90deg, #add8e6, #17c98e);
     color: black;
@@ -29,7 +26,6 @@
     transform: scale(1.05);
 }
 
-/* Zwarte knoppen met witte tekst (Start Journey, Submit-Questionnaire, Create Profile) */
 .btn.black {
     background: linear-gradient(90deg, #010403, #474b53);
     color: #ebf3f2;
@@ -40,7 +36,7 @@
     transform: scale(1.05);
 }
 
-/* Gradient knop voor 'Start Matching' */
+
 .btn.gradient {
     background: linear-gradient(90deg, #98FF98, #00cc99);
     color: black;
