@@ -7,14 +7,14 @@ import {AuthContext} from "../../authentication/AuthContext.jsx";
 
 const Login = () => {
     const { login } = useContext(AuthContext);
-    const [email, setEmail] = useState('');
+    const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const loginData = {
-        userName: email,
+        userName: userName,
         password: password,
         };
 
@@ -50,8 +50,8 @@ const Login = () => {
                         id="email"
                         className="form-input"
                         placeholder="Your Email"
-                        value={email}
-                        onChange={e => setEmail(e.target.value)}
+                        value={userName}
+                        onChange={e => setUserName(e.target.value)}
                         required
                     />
 

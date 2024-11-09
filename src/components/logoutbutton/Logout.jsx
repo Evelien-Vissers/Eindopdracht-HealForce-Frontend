@@ -1,11 +1,18 @@
 import { useAuth } from '../../authentication/AuthContext';
 import Button from "../button/Button.jsx";
+import { useNavigate } from "react-router-dom";
 
 const LogoutButton = () => {
     const { logout } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        logout();
+        navigate('/');
+    };
 
     return (
-        <Button onClick={logout} text="Logout" type= "black" size="small" className="logout-button">
+        <Button onClick={handleLogout} text="Logout" type= "black" size="small" className="logout-button">
             Logout
         </Button>
     );

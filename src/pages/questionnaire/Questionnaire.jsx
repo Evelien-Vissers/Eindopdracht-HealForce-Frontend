@@ -47,36 +47,13 @@ const Questionnaire = () => {
         fetchUserData();
         }, [token]);
 
-    const handleProfileNavigation = async () => {
-        if (!token) {
-            console.error('No token found');
-            return;
-        }
-
-        try {
-            const response = await axios.get(`http://localhost:8080/users/${id}`, {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: token,
-                }
-            });
-        if (response.data.profileId) {
-            navigate('/profile');
-        } else {
-            setErrorMessage("You don't have a profile yet. Please fill in this questionnaire first.");
-        }
-    } catch (error) {
-        console.error("Error checking profile existence:", error);
-        setErrorMessage("An error occurred. Please try again.");
-        }
-    };
-
 
     const onSubmit = async (profile) => {
-        try {
+    try {
             const formData = new FormData();
-            formData.append("profileData", JSON.stringify({
-                dob: profile.dob,
+            formData.append("profileData", new Blob([JSON.stringify({
+                profileId: id,
+                dateOfBirth: profile.dateOfBirth,
                 city: profile.city,
                 country: profile.country,
                 gender: profile.gender,
@@ -85,14 +62,15 @@ const Questionnaire = () => {
                 hospital: profile.hospital,
                 healingChoice: profile.healingChoice,
                 connectionPreference: profile.connectionPreference,
-                healForceName: profile.healForceName,
+                healforceName: profile.healforceName,
                 hasCompletedQuestionnaire: true
-            }));
+            })], {type: "application/json" }));
+
             formData.append("profilePic", profile.profilePicture[0]);
 
             const response = await axios.post('http://localhost:8080/profiles', formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data',
+                    "Content-Type": "multipart/form-data",
                     Authorization: token,
                 },
                 });
@@ -111,7 +89,7 @@ const Questionnaire = () => {
         <div className="questionnaire-page">
 
             <div className="handlenavigation-button">
-                <Button onClick={handleProfileNavigation}
+                <Button link="/profile"
                         className="handlenavigation-button"
                         text="Go Directly to My Profile"
                         type="black"
@@ -125,12 +103,12 @@ const Questionnaire = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="questionnaire-form">
                 <div className="questionnaire-section">
                     <div className="question-section-left">
-                        <label htmlFor="dob">Hi {firstName}! When were you born?</label>
+                        <label htmlFor="dateOfBirth">Hi {firstName}! When were you born?</label>
                         <input
                             type="date"
-                            id="dob" {...register("dob", {required: true})}
+                            id="dateOfBirth" {...register("dateOfBirth", {required: true})}
                         />
-                        {errors.dob && <span className="error-message">This field is required</span>}
+                        {errors.dateOfBirth && <span className="error-message">This field is required</span>}
 
                         <div className="location-group">
                             <div className="location-item">
@@ -149,7 +127,7 @@ const Questionnaire = () => {
                                 <select id="country" {...register("country", {required: true})}>
                                     <option value="">Select your country</option>
                                     {countries.map((country, index) => (
-                                        <option key={index} value={country}>
+                                        <option key={index} value={country.name}>
                                             {country.name}
                                         </option>
                                     ))}
@@ -167,9 +145,9 @@ const Questionnaire = () => {
                             render={({field}) => (
                                 <select id="gender" {...field}>
                                     <option value="">Select your gender</option>
-                                    <option value="female">Female</option>
-                                    <option value="male">Male</option>
-                                    <option value="other">I Rather Not Say</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Other">I Rather Not Say</option>
                                 </select>
                             )}
                         />
@@ -224,7 +202,7 @@ const Questionnaire = () => {
                             <label htmlFor="healingChoiceConventional">
                                 <input
                                     type="radio"
-                                    value="conventional"
+                                    value="Conventional"
                                     id="healingChoiceConventional"
                                     {...register("healingChoice", {required: true})}
                                 />
@@ -234,7 +212,7 @@ const Questionnaire = () => {
                             <label htmlFor="healingChoiceMix">
                                 <input
                                     type="radio"
-                                    value="mix"
+                                    value="Mix"
                                     id="healingChoiceMix"
                                     {...register("healingChoice", {required: true})}
                                 />
@@ -244,7 +222,7 @@ const Questionnaire = () => {
                             <label htmlFor="healingChoiceAlternative">
                                 <input
                                     type="radio"
-                                    value="alternative"
+                                    value="Alternative"
                                     id="healingChoiceAlternative"
                                     {...register("healingChoice", {required: true})}
                                 />
@@ -258,7 +236,7 @@ const Questionnaire = () => {
                             <label htmlFor="connectionPreferenceConventional">
                                 <input
                                     type="radio"
-                                    value="conventional"
+                                    value="Conventional"
                                     id="connectionPreferenceConventional"
                                     {...register("connectionPreference", {required: true})}
                                 />
@@ -268,7 +246,7 @@ const Questionnaire = () => {
                             <label htmlFor="connectionPreferenceMix">
                                 <input
                                     type="radio"
-                                    value="mix"
+                                    value="Mix"
                                     id="connectionPreferenceMix"
                                     {...register("connectionPreference", {required: true})}
                                 />
@@ -278,7 +256,7 @@ const Questionnaire = () => {
                             <label htmlFor="connectionPreferenceAlternative">
                                 <input
                                     type="radio"
-                                    value="alternative"
+                                    value="Alternative"
                                     id="connectionPreferenceAlternative"
                                     {...register("connectionPreference", {required: true})}
                                 />
@@ -288,7 +266,7 @@ const Questionnaire = () => {
                             <label htmlFor="connectionPreferenceAllTypes">
                                 <input
                                     type="radio"
-                                    value="all"
+                                    value="All Types"
                                     id="connectionPreferenceAllTypes"
                                     {...register("connectionPreference", {required: true})}
                                 />
@@ -302,13 +280,13 @@ const Questionnaire = () => {
                     </div>
                 </div>
                 <div className="upload-section">
-                    <label htmlFor="healForceName">What would you like your HealForce name to be?</label>
+                    <label htmlFor="healforceName">What would you like your HealForce name to be?</label>
                     <div className="healforcename-container">
                     <input
                         type="text"
-                        id="healForceName"
+                        id="healforceName"
                         placeholder="Your HealForce Name"
-                        {...register("healForceName", {required: true})}
+                        {...register("healforceName", {required: true})}
                     />
                 </div>
                     <label htmlFor="profilePicture">Lastly, please upload your Heal Force Profile Picture to complete this
@@ -316,11 +294,11 @@ const Questionnaire = () => {
                     <div className="upload-box">
                         <input
                             type="file"
-                            accept="image/*"
-                            id="profilePicture"
+                            accept="http://localhost:8080/image/*"
+                            id="profilePic"
                             {...register("profilePicture", {required: "Profile picture is required"})}
                         />
-                        {errors.profilePicture &&
+                        {errors.profilePic &&
                             <span className="error-message">{errors.profilePicture.message}</span>}
                     </div>
                 </div>
@@ -328,7 +306,7 @@ const Questionnaire = () => {
                 <Button text="Submit"
                         type="black"
                         size="large"
-                        onClick={handleSubmit(onSubmit)}></Button>
+                        onClick={handleSubmit(onSubmit)} />
                 </div>
             </form>
 

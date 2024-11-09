@@ -77,7 +77,7 @@ const OtherProfile = () => {
                         <img className="profile-pic-otherProfile" src={displayedProfileData.profilePicUrl} alt="Profile" />
                     </div>
                     <div className="miniProfile-data">
-                        <h3 className="healforce-name">{displayedProfileData.healForceName}</h3>
+                        <h3 className="healforce-name">{displayedProfileData.healforceName}</h3>
                         <p><img src={location} alt="Location icon" className="icon" />
                             {displayedProfileData.city}, {displayedProfileData.country}</p>
                         <p><img src={warrior} alt="Warrior icon" className="icon" />

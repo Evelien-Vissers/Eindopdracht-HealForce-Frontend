@@ -125,6 +125,7 @@ const Profile = () => {
                     <div className="deletebutton-container">
                         <Button text="Delete My Profile" size="small" type="black"
                                 onClick={handleDeleteProfile}></Button>
+                        <Logout />
                     </div>
                     {error && <div className="error-message">{error}</div>}
                 </div>
