@@ -73,4 +73,20 @@ textarea.form-input {
     height: 100px;
     resize: none;
 }
+.success-message {
+    position: absolute;
+    bottom: 200px;
+    left: 150px;
+    width: 400px;
+    height: 400px;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 2rem;
+    padding: 20px;
+}
 

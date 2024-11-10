@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import { useNavigate } from 'react-router-dom';
 import { Controller } from 'react-hook-form';
 import './Questionnaire.css'
 import personal from "../../assets/personal.png"
@@ -15,10 +14,10 @@ import LogoutButton from "../../components/logoutbutton/Logout.jsx";
 
 const Questionnaire = () => {
     const { register, handleSubmit, control, formState: { errors }} = useForm();
-    const navigate = useNavigate();
     const {token, id} = useContext(AuthContext);
     const [firstName, setFirstName] = useState ('');
-    const [errorMessage, setErrorMessage] = useState('');
+    const [submitMessage, setSubmitMessage] = useState('');
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -75,8 +74,9 @@ const Questionnaire = () => {
                 },
                 });
 
-            if (response.status === 200) {
-                navigate('/profile');
+            if (response.status === 200 || response.status === 201) {
+                setSubmitMessage("Your profile has been made! Check out your profile your profile now by clicking on the 'Go Directly To My Profile' button.");
+                setIsSubmitted(true);
             } else {
                 console.error('Failed to save data', response.status);
             }
@@ -96,7 +96,6 @@ const Questionnaire = () => {
                         size="large">
                 </Button>
                 <LogoutButton />
-                {errorMessage && <p className="error-message">{errorMessage}</p>}
 
             </div>
 
@@ -294,7 +293,7 @@ const Questionnaire = () => {
                     <div className="upload-box">
                         <input
                             type="file"
-                            accept="http://localhost:8080/image/*"
+                            accept="http://localhost:8080/images/*"
                             id="profilePic"
                             {...register("profilePicture", {required: "Profile picture is required"})}
                         />
@@ -303,10 +302,15 @@ const Questionnaire = () => {
                     </div>
                 </div>
                 <div className="submit-container">
-                <Button text="Submit"
-                        type="black"
-                        size="large"
-                        onClick={handleSubmit(onSubmit)} />
+                    <Button text="Submit"
+                            type="black"
+                            size="large"
+                            onClick={handleSubmit(onSubmit)}/>
+                </div>
+                <div className={`submitmessage-container ${isSubmitted ? 'visible' : ''}`}>
+                    {isSubmitted && submitMessage && (
+                        <p className="submit-message">{submitMessage}</p>
+                    )}
                 </div>
             </form>
 

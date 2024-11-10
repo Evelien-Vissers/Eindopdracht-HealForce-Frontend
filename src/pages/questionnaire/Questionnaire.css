@@ -184,7 +184,6 @@ textarea {
 
 .upload-section {
     display: flex;
-    flex-direction: column;
     align-items: center;
     margin-top: 20px;
 }
@@ -213,11 +212,27 @@ textarea {
     margin: 0 auto;
     cursor: pointer;
 }
+
 .submit-container {
     display: flex;
     justify-content: center;
-
 }
 
+.submitmessage-container {
+    display: none;
+    color: white;
+    width: 280px;
+    height: 150px;
+    align-items: center;
+    font-size: 1rem;
+    padding: 5px;
+}
+
+.submitmessage-container.visible {
+    display: block;
+    background: linear-gradient(90deg, #010403, #474b53);
+    border-radius: 30px;
+    padding: 30px;
+}
 
 

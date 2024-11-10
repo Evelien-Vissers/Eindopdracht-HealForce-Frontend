@@ -28,7 +28,7 @@ const Profile = () => {
             try {
                 const response = await axios.get(`http://localhost:8080/profiles/${id}`, {
                     headers: {
-                        "Content-Type": "application/json",
+                        "Content-Type": "multipart/form-data",
                         Authorization: token,
                     }
                 });
@@ -50,7 +50,7 @@ const Profile = () => {
         }
 
         try {
-            axios.delete(`http://localhost:8080/profiles/${id}`, {
+            await axios.delete(`http://localhost:8080/profiles/${id}`, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: token,
@@ -79,6 +79,7 @@ const Profile = () => {
 
     const age = profileData && profileData.dateOfBirth ? calculateAge(profileData.dateOfBirth) : 'N/A';
     const displayedProfileData = profileData || defaultProfile;
+
     const profilePicUrl = displayedProfileData.profilePicUrl.startsWith('/uploads')
         ?`http://localhost:8080/${displayedProfileData.profilePicUrl}`
         : 'default-pic.jpg';
