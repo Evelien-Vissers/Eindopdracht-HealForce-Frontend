@@ -15,7 +15,7 @@ const Mission = () => {
                         <img className="mission-image" src={mission} alt="Mission"/>
                         <ToggleButton>
                         <p className="mission-paragraph">
-                            Heal Force's primary mission is to make a positive impact in the healthcare industry,
+                            Heal Force&apos;s primary mission is to make a positive impact in the healthcare industry,
                             empowering
                             those who are currently battling chronic diseases. To achieve this vision, our platform
                             focuses

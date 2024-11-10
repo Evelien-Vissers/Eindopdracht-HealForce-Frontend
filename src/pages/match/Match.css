@@ -11,11 +11,10 @@
 
 .button-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     position: absolute;
     top: 200px;
-    right: 20px;
-    gap: 550px;
+    left: 70%;
 }
 
 .match-container {

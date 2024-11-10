@@ -9,6 +9,7 @@ const Contact = () => {
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [question, setQuestion] = useState('');
+    const [successMessage, setSuccessMessage] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,13 +22,16 @@ const Contact = () => {
         };
 
         try {
-            const response = await axios.post('http://localhost:8080/users/contact', contactData);
+            const response = await axios.post('http://localhost:8080/users/contact', contactData, {
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            });
 
-            if (response.status === 200) {
-                //Succesvolle reactie
+            if (response.status === 201) {
+                setSuccessMessage(true);
                 alert('Message sent succesfully!');
             } else {
-                //Fout in de reactie
                 alert('Failed to send message');
             }
         } catch (error) {
@@ -89,9 +93,14 @@ const Contact = () => {
                         onChange={e => setQuestion(e.target.value)}
                         required
                     />
-                    <Button text="Submit" type="mint" size="medium" htmlType="submit"/>
+                    <Button text="Submit" type="mint" size="medium" onClick={handleSubmit}/>
                 </form>
             </div>
+            {successMessage && (
+                <div className="success-message">
+                    Thank you for your message! We will come back to you as soon as possible.
+                </div>
+            )}
         </div>
     )
 }

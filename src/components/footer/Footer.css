@@ -1,4 +1,3 @@
-/* Basisstijl voor de footer */
 .footer {
     background-color: black;
     color: white;
@@ -10,7 +9,6 @@
     position: relative;
 }
 
-/* Linker gedeelte met links */
 .footer-left {
     position: absolute;
     left: 20px;
@@ -28,7 +26,6 @@
     text-decoration: underline;
 }
 
-/* Midden gedeelte met logo en bedrijfsnaam */
 .footer-center {
     text-align: center;
 }

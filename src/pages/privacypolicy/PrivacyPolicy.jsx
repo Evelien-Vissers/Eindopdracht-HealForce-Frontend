@@ -13,7 +13,7 @@ const PrivacyPolicy = () => {
 
                 userID assigned by the Platform
                 Platform password (this is collected as part of registration and stored as a one-way hash so that no one, other than you, knows what your password is)
-                Name (Member may provide as part of registration or in a Member's Account Information)
+                Name (Member may provide as part of registration or in a Member&apos;s Account Information)
                 Date of Birth
                 Email address
                 Mailing address (may be collected via email, forms, or Private Message with HealForce staff as part of Member programs such as t-shirt giveaways and HealForce InMotion™)

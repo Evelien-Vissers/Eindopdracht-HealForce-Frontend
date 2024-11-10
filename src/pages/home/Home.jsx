@@ -1,4 +1,3 @@
-import React from 'react';
 import './Home.css'
 import Button from '../../components/button/Button.jsx'
 
@@ -18,7 +17,7 @@ const Home = () => {
                 <h3 className="second-title">About Heal Force</h3>
                 <p className="second-paragraph">
                     Heal Force is a platform that connects people who have survived a chronic disease or who are going
-                    through one—such as cancer, MS, Alzheimer's, ALS, Parkinson's, or diabetes. The platform will
+                    through one—such as cancer, MS, Alzheimer&apos;s, ALS, Parkinson&apos;s, or diabetes. The platform will
                     provide its users a space where they can share their stories and treatments, find support by
                     connecting to those who are experiencing the same, and give reviews on healthcare providers who have treated them.
                     Their stories hold power, and by creating Heal Force, we hope to offer a stage on which the users feel
