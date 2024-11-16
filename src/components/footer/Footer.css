@@ -20,6 +20,7 @@
     color: white;
     text-decoration: none;
     margin-bottom: 10px;
+    max-width: 140px;
 }
 
 .footer-link:hover {
