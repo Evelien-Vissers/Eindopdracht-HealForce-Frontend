@@ -1,14 +1,12 @@
-import { useState} from 'react';
+import {useEffect, useState} from 'react';
 import axios from 'axios';
 import './Admin.css';
-import Button from '../../components/button/Button.jsx'
 import {useAuth} from "../../authentication/AuthContext.jsx";
 import Logout from "../../components/logoutbutton/Logout.jsx";
 
 
 const Admin = () => {
     const [users, setUsers] = useState([]);
-    const [isTableVisible, setIsTableVisible] = useState(false);
     const {token} = useAuth();
 
     const fetchUsers = async () => {
@@ -23,33 +21,31 @@ const Admin = () => {
         }
     };
 
-    const deleteUser = async (userId) => {
+    const deleteUser = async (Id) => {
         if (!token) {
             console.error('No token found');
             return
         }
 
         try {
-            await axios.delete(`http://localhost:8080/users/delete/${userId}`, {
+            await axios.delete(`http://localhost:8080/users/delete/${Id}`, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: token
             }
         });
 
-        setUsers((prevUsers) => prevUsers.filter((user) => user.userId !== userId));
+        setUsers((prevUsers) => prevUsers.filter((user) => user.id !== Id));
         console.log('User succesfully deleted');
         } catch (error) {
             console.error('Error deleting user', error);
         }
     };
 
-    const toggleTableVisibility = () => {
-        if (!isTableVisible && users.length === 0) {
-            fetchUsers();
-        }
-        setIsTableVisible(!isTableVisible);
-    }
+    useEffect(() => {
+        fetchUsers();
+    }, []);
+
 
     return (
         <div className="admin-container">
@@ -57,10 +53,9 @@ const Admin = () => {
 
            <div className="button-container">
                <Logout />
-               <Button text={isTableVisible ? "Hide Users" : "Get All Users"} onClick={toggleTableVisibility} type="black" size="large" />
            </div>
 
-            <table className={`admin-table ${isTableVisible ? "visible" : "hidden"}`}>
+            <table className="admin-table visible">
                 <thead>
                 <tr>
                     <th>First Name</th>
@@ -70,22 +65,20 @@ const Admin = () => {
                     <th>Action</th>
                 </tr>
                 </thead>
-                {isTableVisible && (
                 <tbody>
                 {users.map((user) => (
-                    <tr key={user.userId}>
+                    <tr key={user.id}>
                         <td>{user.firstName}</td>
                         <td>{user.lastName}</td>
                         <td>{user.email}</td>
                         <td>{new Date(user.registrationDate).toLocaleDateString()}</td>
                     <td>
                         <button className="delete-button"
-                        onClick={() => deleteUser(user.userId)}>Delete User</button>
+                        onClick={() => deleteUser(user.id)}>Delete User</button>
                     </td>
                     </tr>
                 ))}
                 </tbody>
-                )}
             </table>
         </div>
     )

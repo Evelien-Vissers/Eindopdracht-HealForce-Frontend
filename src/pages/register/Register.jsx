@@ -101,7 +101,7 @@ const Register = () => {
                             required
                         />
                         <label htmlFor="agreement" className="checkbox-label">
-                            By signing up, I agree with the <Link to="/useragreement" className="link">User Agreement</Link> & <Link to="/privacypolicy" className="link">Privacy Policy</Link> of Heal Force.
+                            By signing up, I agree with the <Link to="/privacypolicyuseragreement" className="link">Privacy Policy & User Agreement</Link> of Heal Force.
                         </label>
                     </div>
 

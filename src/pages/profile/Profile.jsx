@@ -28,7 +28,6 @@ const Profile = () => {
             try {
                 const response = await axios.get(`http://localhost:8080/profiles/${id}`, {
                     headers: {
-                        "Content-Type": "multipart/form-data",
                         Authorization: token,
                     }
                 });
@@ -79,10 +78,7 @@ const Profile = () => {
 
     const age = profileData && profileData.dateOfBirth ? calculateAge(profileData.dateOfBirth) : 'N/A';
     const displayedProfileData = profileData || defaultProfile;
-
-    const profilePicUrl = displayedProfileData.profilePicUrl.startsWith('/uploads')
-        ?`http://localhost:8080/${displayedProfileData.profilePicUrl}`
-        : 'default-pic.jpg';
+    const profilePicUrl = displayedProfileData.profilePicUrl || 'default-pic.jpg';
 
     if (loading) {
         return <p>Loading profile...</p>;
@@ -99,7 +95,7 @@ const Profile = () => {
                 <div className="overlay">
                     <div className="miniProfile-container">
                         <div className="profile-pic-container">
-                            <img className="profile-pic-profile" src={displayedProfileData.profilePicUrl} alt="Profile"/>
+                            <img className="profile-pic-profile" src={profilePicUrl} alt="Profile"/>
                         </div>
                         <div className="miniProfile-data">
                             <h3 className="healforce-name">{displayedProfileData.healforceName}</h3>
